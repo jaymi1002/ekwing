@@ -1,0 +1,59 @@
+/*
+* @Author: lifangfang
+* @Date:   2019-03-19 11:03:35
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-04-04 10:25:41
+*/
+
+.e-check-icon {
+    i,
+    span {
+        vertical-align: middle;
+    }
+    .label {
+        margin-left: 0.133rem;
+    }
+    &.disabled {
+        i {
+            opacity: 0.5;
+        }
+    }
+}
+
+.e-check-list {
+    .e-check-item {
+        padding: 0.267rem;
+        display: flex;
+        .item-side {
+            padding-right: 0.267rem;
+            display: flex;
+            align-items: center;
+            &.disabled {
+                opacity: 0.5;
+            }
+        }
+        .item-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+        border-bottom:1px solid #ececec;
+
+        &.reverse {
+            flex-direction: row-reverse;
+            .item-side {
+                padding-right: 0;
+                padding-left: 0.267rem;
+            }
+        }
+    }
+}
+
+.e-checker-box {
+    .e-checker-item {
+        display: inline-block;
+        &-selected {}
+        &-disabled {}
+        &-default {}
+    }
+}

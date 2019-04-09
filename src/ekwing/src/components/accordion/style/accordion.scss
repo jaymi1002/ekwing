@@ -1,0 +1,26 @@
+/*
+* @Author: lifangfang
+* @Date:   2019-04-02 17:42:55
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-04-03 11:20:56
+*/
+.accordion{
+	width: 100%;
+	&-item-title{
+		padding: 0 0.267rem;
+	}
+	&-item-content{
+		overflow: hidden;
+		padding: 0 0.267rem;
+	}
+
+	&-enter,&-leave-to{
+		height:0;
+	}
+	&-animate-enter-active,&-animate-leave-active{
+		transition:height 0.5s ease;
+	}
+	&-animate-enter,&-animate-leave-to{
+		height: 0;
+	}
+}

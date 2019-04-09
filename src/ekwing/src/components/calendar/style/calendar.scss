@@ -1,0 +1,75 @@
+/*
+* @Author: lifangfang
+* @Date:   2019-03-28 14:13:52
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-04-03 15:25:01
+*/
+
+@import "../../../style/base/variables";
+.e-calendar {
+    background-color: map-get($colors, 'white');
+    width: 100%;
+    .e-calendar-title {
+        height: 1.067rem;
+        line-height: 1.067rem;
+        position: relative;
+        text-align: center;
+        border-bottom: 0.013rem solid map-get($colors, 'ec');
+    }
+    .e-calendar-top {
+        width: 100%;
+        &-item {
+            width: 50%;
+            float: left;
+            text-align: center;
+            height: 1.067rem;
+            line-height: 1.067rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 0.267rem;
+            box-sizing: border-box;
+        }
+        &:after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+    }
+    .e-calendar-content {
+        table {
+            width: 100%;
+        }
+        th,
+        td {
+            padding: 0 0.267rem;
+            text-align: center;
+            height: 1.067rem;
+            vertical-align: middle;
+        }
+        th {
+            background-color: map-get($colors, 'eee');
+        }
+        .each-date {
+            display: inline-block;
+            height: 0.667rem;
+            width: 0.667rem;
+            vertical-align: middle;
+            line-height: 0.667rem;
+            border-radius: 50%;
+            color: map-get($colors, 'g3');
+            &.is-now {
+                color: map-get($colors, 'blue');
+            }
+            &.selected {
+                background-color: map-get($colors, 'blue');
+                color: map-get($colors, 'white');
+            }
+            &.disabled,&.not-in{
+                color: map-get($colors, 'g9');
+                background-color: map-get($colors, 'transparent');
+            }
+
+        }
+    }
+}

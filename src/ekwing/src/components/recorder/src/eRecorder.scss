@@ -1,0 +1,25 @@
+/*
+* @Author: lifangfang
+* @Date:   2019-01-09 11:56:33
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-01-17 15:38:51
+*/
+.e-recoder{
+	width: 1.933rem;
+	height: 1.933rem;
+	position: relative;
+	display: inline-block;
+	&-btn{
+		display: flex;
+		justify-content:center;
+		align-items:center;
+		border-radius: 50%;
+		position: absolute;
+		height: 75%;
+		width: 75%;
+		top:50%;
+		left: 50%;
+		transform:translate(-50%, -50%); 
+		z-index: 2;
+	}
+}

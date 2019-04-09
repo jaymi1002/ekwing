@@ -1,0 +1,145 @@
+/*
+* @Author: lifangfang
+* @Date:   2018-12-25 15:12:45
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2018-12-25 15:12:53
+*/
+.row > .col{
+	height: auto;
+	flex:1 0 auto;
+}
+@for $i from 1 through 12{
+	.row > .col-#{$i}{
+		height: auto;
+		width: 100%/12*$i;
+	}
+}
+
+.row,
+.column,
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    &.inline {
+        display: inline-flex;
+    }
+}
+
+.row {
+    flex-direction: row;
+    &.reverse {
+        flex-direction: row-reverse;
+    }
+}
+
+.column {
+    flex-direction: column;
+    &.reverse {
+        flex-direction: column-reverse;
+    }
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.no-wrap {
+    flex-wrap: nowrap;
+}
+
+.wrap-reverse {
+    flex-wrap: wrap-reverse;
+}
+
+.justify {
+    &-start {
+    	justify-content:flex-start;
+    }
+    &-end{
+    	justify-content:flex-end;
+    }
+    &-center{
+    	justify-content:center;
+    }
+    &-between{
+    	justify-content:space-between;
+    }
+    &-around{
+    	justify-content:space-around;
+    }
+}
+.items{
+	&-start{
+		align-items:flex-start;
+	}
+	&-end{
+		align-items:flex-end;
+	}
+	&-center{
+		align-items:center;
+	}
+	&-baseline{
+		align-items:baseline;
+	}
+	&-stretch{
+		align-items:stretch;
+	}
+}
+.content{
+	&-start{
+		align-content:flex-start;
+	}
+	&-end{
+		align-content:flex-end;
+	}
+	&-center{
+		align-content:center;
+	}
+	&-between{
+		align-content:between;
+	}
+	&-around{
+		align-content:around;
+	}
+	&-stretch{
+		align-content:stretch;
+	}
+}
+
+.order{
+	&-first{
+		order:-1000;
+	}
+	&-middle{
+		order:0;
+	}
+	&-last{
+		order:1000;
+	}
+}
+
+.self{
+	&-auto{
+		align-self:auto;
+	}
+	&-start{
+		align-self:start;
+	}
+	&-center{
+		align-self:center;
+	}
+	&-between{
+		align-self:between;
+	}
+	&-around{
+		align-self:around;
+	}
+	&-stretch{
+		align-self:stretch;
+	}
+}
+
+.flex-center{
+	@extend .justify-center;
+	@extend .items-center;
+}

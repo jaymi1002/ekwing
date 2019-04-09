@@ -1,0 +1,50 @@
+/*
+* @Author: lifangfang
+* @Date:   2019-03-22 12:03:46
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-04-03 15:12:15
+*/
+@import '@/ekwing/src/style/base/variables.scss';
+.e-button-tab {
+    display: flex;
+    position: relative;
+	background-color: map-get($colors, 'white');
+	height: 0.733rem;
+    &::after{
+    	position: absolute;
+    	left:0;
+    	top:0;
+    	width: 50%;
+    }
+    .tab-item {
+        display: flex;
+        justify-content:center;
+        align-items:center;
+        z-index:2;
+        cursor: pointer;
+        color:map-get($colors,'g3');
+    }
+
+    .tab-active {
+        color: map-get($colors, 'white');
+    }
+	
+    &-cir{
+    	border-radius: 9999px;
+    	&::after{
+			border-radius: 9999px;
+    	}
+    	.tab-bg{
+    		border-radius: 9999px;
+    	}
+    }
+    .tab-bg{
+    	position: absolute;
+    	left:0;
+    	top:0;
+    	width: 50%;
+    	height: 100%;
+		transition:left 0.1s linear;
+		z-index:1;
+    }
+}

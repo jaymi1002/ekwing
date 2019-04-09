@@ -1,0 +1,37 @@
+/*
+* @Author: lifangfang
+* @Date:   2019-03-28 18:46:03
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-03-29 15:40:30
+*/
+
+@import '../../../style/base/variables.scss';
+$itemHight:0.933rem;
+.e-datetime {
+	width: 100%;
+	background-color: map-get($colors, 'white');
+    &-top {
+        display: flex;
+        height: 1.2rem;
+        line-height: 1.2rem;
+        justify-content: space-between;
+		border-bottom: 0.013rem solid map-get($colors, 'e7');
+    }
+    &-content {
+        height: $itemHight*7;
+        width: 100%;
+        position: relative;
+        display: flex;
+        .scroller-wrap {
+            flex: 1;
+        }
+        .time-item {
+            height: $itemHight;
+            line-height: 0.933rem;
+            text-align: center;
+        }
+        .placeholder {
+            height: $itemHight*3;
+        }
+    }
+}

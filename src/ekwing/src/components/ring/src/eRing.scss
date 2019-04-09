@@ -1,0 +1,38 @@
+/*
+* @Author: lifangfang
+* @Date:   2019-01-07 17:22:54
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-01-17 15:34:02
+*/
+
+@import "../../../style/base/variables.scss";
+.time_cir {
+    // margin-right: .133rem;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    line-height: 1;
+    transform-origin: 50% 50%;
+    transform: rotate(90deg);
+    circle {
+        &.active {
+            transition: stroke-dasharray 300ms linear;
+        }
+        &.forward {
+            transform-origin: 50% 50%;
+            transform: scale(-1, -1);
+        }
+        &.reverse {
+            transform-origin: 50% 50%;
+            transform: scale(-1, 1);
+        }
+    }
+}
+
+@each $key,
+$var in $colors {
+    .stroke-#{$key} {
+        stroke: $var !important;
+    }
+}

@@ -1,0 +1,44 @@
+/*
+* @Author: lifangfang
+* @Date:   2018-12-25 15:24:11
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-04-03 14:43:34
+*/
+
+@import "./variables";
+.no-padding {
+    padding: 0 !important;
+}
+
+@each $val,
+$size in $sizeList {
+    .p#{$val} {
+        padding: $size;
+    }
+    .pt#{$val} {
+        padding-top: $size;
+    }
+    .pb#{$val} {
+        padding-bottom: $size;
+    }
+    .pl#{$val} {
+        padding-left: $size;
+    }
+    .pr#{$val} {
+        padding-right: $size;
+    }
+    .ptb#{$val} {
+        padding-top: $size;
+        padding-bottom: $size;
+    }
+    .plr#{$val} {
+        padding-left: $size;
+        padding-right: $size;
+    }
+    .pd#{$val} {
+        padding-top: $size;
+        padding-bottom: $size;
+        padding-left: $size;
+        padding-right: $size;
+    }
+}

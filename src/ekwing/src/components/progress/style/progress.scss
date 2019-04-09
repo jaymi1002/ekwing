@@ -1,0 +1,30 @@
+/*
+* @Author: lifangfang
+* @Date:   2019-04-04 16:12:34
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-04-04 16:23:08
+*/
+.e-progress{
+	width: 100%;
+	height: 1.2rem;
+	padding-right: 0.267rem !important;
+	.currentNumber{
+		width: 13%;
+	}
+	.bar{
+		box-sizing: border-box;
+		width: 87%;
+	}
+	.bar-outter{
+		width: 100%;
+		height: 0.093rem;
+		background-color: #e5e5e5;
+		border-radius: 999px;
+	}
+	.bar-inner{
+		height: 100%;
+		border-radius: 999px;
+		-webkit-transition: width 300ms linear;
+        transition: width 300ms linear;
+	}
+}
