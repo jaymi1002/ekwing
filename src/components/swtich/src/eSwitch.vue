@@ -1,0 +1,98 @@
+<template>
+    <div class="e-switch" :class="switchClass" @click="trigger">
+        <a ref="switchBtn" class="e-switch-btn" @click.stop="trigger" href="javascript:;" v-touch-pan.stop.horizontal="pan"></a>
+    </div>
+</template>
+<script type="text/javascript">
+import { width, css } from '../../../helpers/dom.js';
+export default {
+    name: 'e-switch',
+    model: {
+        prop: 'value',
+        event: 'change',
+    },
+    props: {
+        value: Boolean,
+        color: String,
+    },
+    computed: {
+        switchClass() {
+            let classes = [];
+            if (this.active) {
+                classes.push('active');
+                classes.push(`bg-${this.color}`);
+            }
+            return classes;
+        }
+    },
+    data() {
+        return {
+            active: this.value
+        }
+    },
+    methods: {
+        trigger() {
+            this.active = !this.active;
+        },
+        pan(value) {
+            let switchWidth = width(this.$el);
+            let switchBtnWidth = width(this.$refs.switchBtn);
+            if (!this.active && value.direction === 'right'){
+                if(value.distance.x < switchWidth - switchBtnWidth){
+                    css(this.$refs.switchBtn, {
+                        left: value.distance.x + 'px'
+                    });
+                    if (value.isFinal) {
+                        if (value.distance.x > (switchWidth - switchBtnWidth) / 2) {
+                            this.active = true;
+                        } else {
+                            this.switchFalse();
+                        }
+                    }
+                }else{
+                    this.active = true;
+                }
+            }
+
+            if (this.active && value.direction === 'left'){
+                if(value.distance.x < switchWidth - switchBtnWidth){
+                    css(this.$refs.switchBtn, {
+                        left: (switchWidth - switchBtnWidth - value.distance.x) + 'px'
+                    });
+                    if (value.isFinal) {
+                        if (value.distance.x > (switchWidth - switchBtnWidth) / 2) {
+                            this.active = false;
+                        } else {
+                            this.switchTrue();
+                        }
+                    }
+                }else{
+                    this.active = false;
+                }
+            }
+        },
+        switchFalse() {
+            css(this.$refs.switchBtn, {
+                left: '0px'
+            });
+        },
+        switchTrue() {
+            let switchWidth = width(this.$el);
+            let switchBtnWidth = width(this.$refs.switchBtn);
+            css(this.$refs.switchBtn, {
+                left: switchWidth - switchBtnWidth + 'px'
+            });
+        }
+    },
+    watch: {
+        value(newVal) {
+            this.active = newVal;
+        },
+        active(newVal) {
+            this.$emit('change', this.active);
+            newVal ? this.switchTrue() : this.switchFalse();
+        }
+    }
+}
+
+</script>

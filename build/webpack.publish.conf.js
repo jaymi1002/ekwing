@@ -2,7 +2,7 @@
  * @Author: lifangfang
  * @Date:   2018-12-04 16:08:53
  * @Last Modified by:   lifangfang
- * @Last Modified time: 2018-12-04 19:19:11
+ * @Last Modified time: 2019-06-19 15:17:27
  */
 'use strict'
 const path = require('path')
@@ -18,34 +18,33 @@ const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 var vueLoaderConfig = require('./vue-loader.conf')
 
-function resolve (dir) {
-  return path.join(__dirname, '..', dir)
+function resolve(dir) {
+    return path.join(__dirname, '..', dir)
 }
 
 baseWebpackConfig.entry = {};
-baseWebpackConfig.module.rules = [
-  {
-    test: /\.vue$/,
-    loader: 'vue-loader',
-    options: vueLoaderConfig
-  },
-  {
-    test: /\.js$/,
-    loader: 'babel-loader',
-    include: [resolve('src')]
-  },
-  {
-    test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
-    loader: 'url-loader',
-    options: {
-      limit: 10000,
-      name: utils.assetsPath('fonts/[name].[ext]')
+baseWebpackConfig.module.rules = [{
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: vueLoaderConfig
+    },
+    {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        include: [resolve('src')]
+    },
+    {
+        test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+            limit: 10000,
+            name: utils.assetsPath('fonts/[name].[ext]')
+        }
     }
-  }
 ]
 var webpackConfig = merge(baseWebpackConfig, {
     entry: {
-        ekwing: './src/ekwing/src/index.js'
+        ekwing: './src/index.js'
     },
     module: {
         rules: utils.styleLoaders({
@@ -60,8 +59,8 @@ var webpackConfig = merge(baseWebpackConfig, {
         filename: 'index.js',
         publicPath: config.publish.assetsPublicPath,
         library: 'ekwing',
-    	libraryTarget: 'umd',
-    	umdNamedDefine: true
+        libraryTarget: 'umd',
+        umdNamedDefine: true
     },
     externals: {
         vue: {
@@ -69,6 +68,22 @@ var webpackConfig = merge(baseWebpackConfig, {
             commonjs: 'vue',
             commonjs2: 'vue',
             amd: 'vue'
+        },
+        autosize: {
+            commonjs: 'autosize',
+            commonjs2: 'autosize',
+            amd: 'autosize'
+        },
+        'iscroll/build/iscroll-probe':'iscroll/build/iscroll-probe',
+        iscroll: {
+            commonjs: 'iscroll',
+            commonjs2: 'iscroll',
+            amd: 'iscroll'
+        },
+        validator: {
+            commonjs: 'validator',
+            commonjs2: 'validator',
+            amd: 'validator'
         }
     },
     plugins: [

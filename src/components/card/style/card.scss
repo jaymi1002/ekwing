@@ -1,0 +1,23 @@
+/*
+* @Author: lifangfang
+* @Date:   2019-04-10 15:01:16
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-06-05 16:03:56
+*/
+
+@import '../../../style/base/variables';
+.e-card {
+    border-radius: 0.267rem;
+    padding: 0 0.4rem;
+    &-main {
+        padding: 0.267rem 0;
+    }
+    &-title {
+        padding: 0.4rem 0 0.133rem;
+    }
+    &-label {
+        margin-top: 0.267rem;
+        padding-bottom: 0.4rem;
+        position: relative;
+    }
+}

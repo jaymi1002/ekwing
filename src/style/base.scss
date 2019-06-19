@@ -1,0 +1,73 @@
+/*
+* @Author: lifangfang
+* @Date:   2018-12-04 19:28:50
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-06-18 20:08:41
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i, button,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;	
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+@import "./iconfonts/style";
+@import "./base/align";
+@import "./base/border";
+@import "./base/color";
+@import "./base/decoration";
+@import "./base/display";
+@import "./base/flex";
+@import "./base/float";
+@import "./base/font";
+@import "./base/margin";
+@import "./base/padding";
+@import "./base/visibility";
+@import "./base/vertical";
+@import "./animate";
+
+html,*{
+    font-family: Tahoma,Arial,Roboto,"Droid Sans","Helvetica Neue","Droid Sans Fallback","Heiti SC","Microsoft Yahei",sans-serif
+}
+
+html ,body {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.rel {
+    position: relative
+}
+
+.abs {
+    position: absolute
+}
+
+.cur-pointer {
+    cursor: pointer
+}
+
+.cur-default {
+    cursor: default
+}
+
+@for $i from 1 through 20{
+	.pct#{$i*5}{
+		width: $i*5%;
+	}
+}

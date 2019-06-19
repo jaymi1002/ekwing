@@ -1,0 +1,65 @@
+/*
+* @Author: lifangfang
+* @Date:   2019-04-10 17:35:12
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-04-11 10:52:48
+*/
+
+@import '../../../style/base/variables.scss';
+.e-timeline {
+    .e-timeline-item {
+        display: flex;
+    }
+    &-left {
+        flex: 0 1 50%;
+        padding: 0 0.267rem;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+        box-sizing: border-box;
+        color: map-get($colors, 'g9');
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            border-left: 0.027rem solid map-get($colors, 'df');
+        }
+        .time-icon {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translate(50%, -50%);
+            z-index: 2;
+            &:before {
+                background-color: map-get($colors, 'white');
+            }
+        }
+    }
+    &-right {
+        position: relative;
+        flex: 1 0 50%;
+        padding: 0 0.267rem;
+        display: flex;
+        box-sizing: border-box;
+    }
+    .e-timeline-item.active {
+        .e-timeline-left {
+            color: inherit;
+        }
+    }
+
+    &-item:first-child{
+    	.e-timeline-left:after{
+    		top:50%;
+    	}
+    }
+    &-item:last-child{
+    	.e-timeline-left:after{
+    		bottom:50%;
+    	}
+    }
+}

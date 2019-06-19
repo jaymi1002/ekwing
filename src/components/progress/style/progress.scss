@@ -1,0 +1,55 @@
+/*
+* @Author: lifangfang
+* @Date:   2019-04-04 16:12:34
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-04-15 17:45:32
+*/
+
+.e-progress {
+    width: 100%;
+    height: 1.2rem;
+    padding-right: 0.267rem !important;
+    .bar {
+        box-sizing: border-box;
+    }
+    .bar-outter {
+        width: 100%;
+        height: 0.093rem;
+        background-color: #e5e5e5;
+        border-radius: 999px;
+    }
+    .bar-inner {
+        height: 100%;
+        border-radius: 999px;
+        -webkit-transition: width 300ms linear;
+        transition: width 300ms linear;
+    }
+}
+
+.e-cir-progress {
+    position: relative;
+    .current-ring {
+        transition: stroke-dasharray 1s ease-in-out;
+    }
+    .cir-progress-circle {
+        transform-origin: 50px 50px;
+        transition: all 1s ease-in-out;
+    }
+    .cir-progress-content {
+        position: absolute;
+        left: 10%;
+        top: 10%;
+        right: 10%;
+        bottom: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .cir-progress-per {
+            font-size: 1.8rem;
+        }
+        .cir-progress-label {
+            margin-top: 5%;
+        }
+    }
+}

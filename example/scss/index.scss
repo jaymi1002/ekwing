@@ -1,0 +1,30 @@
+/*
+* @Author: lifangfang
+* @Date:   2019-05-17 14:57:36
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-06-04 11:11:45
+*/
+@import './button.scss';
+@import './text.scss';
+@import './comm/example.scss';
+
+
+@each $theme,$list in $button {
+	.#{$theme} {
+		@each $key,$var in $list {
+			&-#{$key} {
+				@each $cssKey,$value in $var {
+					#{$cssKey}:$value
+				}
+			}
+		}
+	}
+}
+@each $key,$var in $text {
+	.text-#{$key} {
+		color:$var;
+	}
+	.bg-#{$key} {
+		background-color:$var;
+	}
+}

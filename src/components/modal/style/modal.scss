@@ -1,0 +1,51 @@
+/*
+* @Author: lifangfang
+* @Date:   2018-12-05 17:00:32
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-05-13 17:45:55
+*/
+
+// @import "../../../style/animate.css";
+.e-responsive-modal {
+    overflow: hidden;
+}
+
+.e-modal-mask {
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.e-modal-outter {
+    .e-modal {
+        width: 100%;
+        position: absolute;
+        left: 0;
+        z-index: 3;
+        display: flex;
+        &-top {
+            top: 0;
+            justify-content: center;
+        }
+        &-bottom {
+            bottom: 0;
+            justify-content: center;
+        }
+        &-left {
+            left: 0;
+            justify-content:flex-start;
+        }
+        &-right {
+            right: 100%;
+            justify-content:flex-end;
+        }
+        &-middle {
+            justify-content:center;
+            align-items:center;
+        }
+    }
+}

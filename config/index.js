@@ -75,7 +75,7 @@ module.exports = {
     },
     publish: {
         env: require('./publish.env'),
-        distRoot: path.resolve(__dirname, '../src/ekwing/dist'),
+        distRoot: path.resolve(__dirname, '../dist'),
         assetsSubDirectory: '',
         assetsPublicPath: '',
         productionSourceMap:false,

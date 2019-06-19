@@ -1,0 +1,39 @@
+/*
+* @Author: lifangfang
+* @Date:   2018-12-25 16:48:22
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-05-23 14:04:34
+*/
+
+@import "./variables";
+.no-bd {
+    border: none !important;
+}
+
+$pos:('':'', 't':'-top', 'b':'-bottom', 'l':'-left', 'r':'-right');
+
+@each $key,$var in $pos{
+    .bd#{$key}-dashed {
+        border#{$var}-style: dashed;
+    }
+    .bd#{$key}-dotted {
+        border#{$var}-style: dotted;
+    }
+    .bd#{$key}-double {
+        border#{$var}-style: double;
+    }
+    .bd#{$key}-solid {
+        border#{$var}-style: solid;
+    }
+    .bd#{$key}-groove {
+        border#{$var}-style: groove;
+    }
+}
+
+@for $i from 1 through 3 {
+    @each $key,$var in $pos {
+        .bd#{$key}#{$i}px {
+            border#{$var}-width: #{$i}px;
+        }
+    }
+}

@@ -1,0 +1,45 @@
+/*
+* @Author: lifangfang
+* @Date:   2019-04-08 16:02:19
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-06-05 14:26:41
+*/
+
+@import "../../../style/base/variables.scss";
+.e-input-wrap {
+    display: flex;
+    align-items: center;
+    line-height: 2;
+    height: 100%;
+    .input{
+        &-label,&-right-label{
+            flex:0 0 auto;
+        }
+        &-label{
+            margin-right: 0.267rem;
+        }
+        &-right-label{
+            margin-left: 0.267rem; 
+        }
+        &-main{
+            flex:1 1 0;
+            position: relative;
+            height: 100%;
+            input{
+                width: 100%;
+                height: 100%;
+                border:none;
+                background-color: transparent;
+            }
+        }
+        &-status{
+            flex:0 0 auto;
+            display: flex;
+            align-items: center;
+        }
+    }
+    .disabled {
+        opacity: 0.4;
+        background-color: transparent;
+    }
+}

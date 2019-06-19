@@ -1,0 +1,47 @@
+/*
+* @Author: lifangfang
+* @Date:   2019-05-17 14:57:43
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-05-20 18:57:39
+*/
+@import './variables.scss';
+$button:( 
+	'primary':(
+		'default':(
+			'background-color':map-get($primary,'blue'),
+			'color':#fff,
+		),
+		'disabled':(
+			'background-color': #999,
+    		'color': #fff,
+		),
+		'plain-default':(
+			'border-color':map-get($primary,'blue'),
+			'color':map-get($primary,'blue'),
+		),
+		'plain-disabled':(
+			'border-color':map-get($primary,'blue'),
+			'color':map-get($primary,'blue'),
+			'opacity': 0.5
+		)
+	),
+	'primary-2':(
+		'default':(
+			'background-color':map-get($primary,'green'),
+			'color':#fff,
+		),
+		'disabled':(
+			'background-color': #999,
+    		'color': #fff,
+		),
+		'plain-default':(
+			'border-color':map-get($primary,'green'),
+			'color':map-get($primary,'green'),
+		),
+		'plain-disabled':(
+			'border-color':map-get($primary,'green'),
+			'color':map-get($primary,'green'),
+			'opacity': 0.5
+		)
+	),
+);

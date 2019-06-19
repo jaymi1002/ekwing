@@ -1,0 +1,41 @@
+/*
+* @Author: lifangfang
+* @Date:   2018-12-25 16:25:10
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-05-23 14:04:51
+*/
+@import './variables';
+//common colors
+@each $key,$var in $commonColors {
+	.text-#{$key} {
+		color: $var;
+	}
+	.bg-#{$key}{
+		background-color: $var;
+	}
+
+	.bd-#{$key} {
+        border-color: $var;
+    }
+}
+
+//text 
+@each $key,$var in $textColors {
+	.text-#{$key} {
+		color: $var;
+	}
+}
+
+//background
+@each $key,$var in $bgColors {
+	.bg-#{$key}{
+		background-color: $var;
+	}
+}
+
+//border
+@each $key,$var in $borderColors {
+    .bd-#{$key} {
+        border-color: $var;
+    }
+}

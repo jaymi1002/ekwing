@@ -1,0 +1,39 @@
+/*
+* @Author: lifangfang
+* @Date:   2019-04-02 17:42:55
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-06-04 15:57:11
+*/
+
+.accordion {
+    width: 100%;
+    .accordion {
+        &-item-title {
+        }
+        &-item-content {
+            overflow: hidden;
+            padding: 0 0.4rem;
+        }
+        &-enter,
+        &-leave-to {
+            height: 0;
+        }
+        &-animate-enter-active,
+        &-animate-leave-active {
+            transition: height 0.5s ease;
+        }
+        &-animate-enter,
+        &-animate-leave-to {
+            height: 0;
+        }
+    }
+    .arrow-animate {
+        transition: transform 0.2s linear;
+    }
+    .arrow-up {
+        transform: rotate(0deg);
+    }
+    .arrow-down {
+        transform: rotate(-180deg);
+    }
+}

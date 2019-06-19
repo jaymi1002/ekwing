@@ -1,0 +1,132 @@
+/*
+* @Author: lifangfang
+* @Date:   2019-03-27 17:20:45
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-05-20 17:35:53
+*/
+
+.e-dialog {
+    background-color: #fff;
+    border-radius: 0.267rem;
+    box-sizing: border-box;
+    margin-top: -0.667rem;
+    padding: 0.293rem 0;
+    width: 8.16rem;
+    min-height: 4.0rem;
+    .main {
+        position: relative;
+    }
+    .top {
+        padding: 0 1.0rem;
+        &-image {
+            height: 2.027rem;
+        }
+        &-text {
+            .title {
+                line-height: 1;
+            }
+            .content {
+                line-height: 0.56rem;
+            }
+            >p {
+                margin-top: 0.4rem;
+            }
+        }
+    }
+    .btn-wrap {
+        padding: 0.533rem 0 0.4rem;
+        .btn-item {
+            margin: 0 0.187rem;
+        }
+    }
+}
+
+.e-dialog-simple {
+    background-color: #fff;
+    border-radius: 0.267rem;
+    box-sizing: border-box;
+    margin-top: -0.667rem;
+    padding: 0.4rem 0 0;
+    width: 7.2rem; // min-height: 4.0rem;
+    .main {
+        position: relative;
+    }
+    .top {
+        padding: 0 0.96rem;
+        &-text {
+            .title {
+                line-height: 1;
+            }
+            .content {
+                line-height: 0.56rem;
+            }
+            >p {
+                margin-top: 0.24rem;
+            }
+        }
+    }
+    .btn-wrap {
+        border-top: 0.027rem solid #f1f1f1;
+        margin-top: 0.533rem;
+        .btn-item:first-child {
+            border-bottom-left-radius: 0.267rem;
+            position: relative;
+        }
+        .btn-item:first-child:after {
+            content: '';
+            position: absolute;
+            height: 100%;
+            right: 0;
+            top: 0;
+            border-right: 0.027rem solid #f1f1f1;
+        }
+        .btn-item:last-child {
+            border-bottom-right-radius: 0.267rem;
+        }
+    }
+}
+
+
+.e-active-pop {
+    width: 8.16rem;
+    border-radius: 0.267rem;
+    max-height: 10.853rem;
+    box-sizing: border-box;
+    background-color: #fff;
+    .top-img {
+        width: 8.16rem;
+        height: 3.467rem;
+        border-top-left-radius: 0.267rem;
+        border-top-right-radius: 0.267rem;
+    }
+    .main {
+        max-height: 4.667rem;
+        overflow: auto;
+        &-alert {
+            padding: 0.267rem 0 0;
+            margin: 0 1.0rem;
+        }
+        &-confirm {
+            padding: 0.267rem 0 0;
+            margin: 0 0.56rem;
+        }
+    }
+    .top {
+        &-text {
+            .title {
+                margin-top: 0.267rem;
+                line-height: 1;
+            }
+            .content {
+                margin-top: 0.267rem;
+                line-height: 0.56rem;
+            }
+        }
+    }
+    .btn-wrap {
+        padding: 0.533rem 0 0.8rem;
+        .btn-item {
+            margin: 0 0.187rem;
+        }
+    }
+}

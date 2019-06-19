@@ -1,0 +1,41 @@
+/*
+* @Author: lifangfang
+* @Date:   2019-03-19 11:03:35
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-06-05 10:53:47
+*/
+
+.e-check-icon {
+    padding: 0.267rem 0.4rem;
+    i,
+    span {
+        vertical-align: middle;
+    }
+    span{
+        line-height: 1.2;
+    }
+    .label {
+        margin-left: 0.133rem;
+    }   
+}
+
+
+.e-check-list {
+    .title{
+        padding: 0.267rem 0.4rem;
+        line-height: 1.5;
+    }
+    .e-check-item .touch-active:active{
+        background-color: #efefef;
+    }
+}
+
+.e-checker-box {
+    .e-checker-item {
+        display: inline-block;
+        &-selected {}
+        &-disabled {}
+        &-default {}
+
+    }
+}

@@ -1,0 +1,73 @@
+/*
+* @Author: lifangfang
+* @Date:   2019-03-27 17:54:24
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-06-11 14:06:32
+*/
+
+@import '../../../style/base/variables.scss';
+.e-actionsheet-wrap {
+    width: 100%;
+    padding: 0 0.267rem;
+    box-sizing: border-box;
+
+    .main {
+        .header {
+            padding: 0.4rem 0.4rem 0.267rem;
+            text-align: center;
+            line-height: 1.5;
+        }
+        .header.horizontal{
+            padding-bottom: 0;
+        }
+        .actionsheet-list,.actionsheet-list-horizontal {
+            border-radius: 0.133rem;
+            margin-bottom: 0.267rem;
+        }
+        border-radius: 0.133rem;
+        background-color: #fff;
+    }
+    .cancel-wrap {
+        margin-bottom: 0.267rem;
+    }
+    
+    .cancel-btn,
+    .actionsheet-item {
+        height: 1.28rem;
+        line-height: 1.28rem;
+        width: 100%;
+        text-align: center;
+        display: block;
+        &:active {
+            background-color: #efefef;
+        }
+    }
+    .cancel-btn {
+        background-color: #fff;
+        border-radius: 0.133rem;
+    }
+    .actionsheet-item.disabled{
+        & > *{
+            opacity:0.2;
+        }
+        &:active{
+            background-color: unset;
+        }
+    }
+    .actionsheet-list-horizontal{
+        padding: 0.4rem 0;
+        border:none;
+        .actionsheet-item{
+            line-height: 1.5;
+            height: unset;
+            border:none;
+            padding:0;
+        }
+        .icon-img{
+            width: 0.933rem;
+            height: 0.933rem;
+            margin-bottom: 0.267rem;
+        }
+    }
+}
+

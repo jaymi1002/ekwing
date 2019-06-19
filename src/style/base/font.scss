@@ -1,0 +1,69 @@
+/*
+* @Author: lifangfang
+* @Date:   2018-12-25 15:12:59
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-06-04 10:53:01
+*/
+
+@import './variables';
+@for $i from 12 through 44 {
+    // @if $i%2==0 {
+        .font#{$i} {
+            font-size: #{$i}px;
+        }
+        [data-dpr="2"] .font#{$i} {
+            font-size: #{$i*2}px;
+        }
+        [data-dpr="3"] .font#{$i} {
+            font-size: #{$i*3}px;
+        }
+        .lh#{$i}{
+			line-height: #{$i}px;
+        }
+        [data-dpr="2"] .lh#{$i} {
+            line-height: #{$i*2}px;
+        }
+        [data-dpr="3"] .lh#{$i} {
+            line-height: #{$i*3}px;
+        }
+    // }
+}
+
+.lh1{
+	line-height: 1;
+}
+.lh1-5{
+	line-height: 1.5;
+}
+.lh2{
+	line-height: 2;
+}
+.lh2-5{
+	line-height: 2.5;
+}
+.lh3{
+    line-height: 3;
+}
+
+.f {
+    &a {
+        font-family: Arial;
+    }
+    &s {
+        font-family: Simsun;
+    }
+    &w {
+        font-family: 'Microsoft Yahei';
+    }
+
+    &t {
+        font-family: 'Times New Roman';
+    }
+}
+
+.bold{
+    font-weight:700;
+}
+.italic{
+    font-style:italic;;
+}

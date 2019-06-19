@@ -1,0 +1,59 @@
+/*
+* @Author: lifangfang
+* @Date:   2019-03-25 14:19:55
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-06-05 17:09:25
+*/
+
+.e-switch-wrap {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.267rem 0.4rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .e-switch-hd {
+        flex: 1;
+        display: flex;
+        justify-content:flex-start;
+    }
+    .e-switch-fr {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 0.267rem;
+    }
+
+    &.reverse {
+        .e-switch-hd{
+            padding-left: 0.267rem;
+            justify-content:flex-end;
+        }
+        .e-switch-fr{
+            padding-left: 0;
+        }
+    }
+}
+
+.e-switch {
+    display: inline-block;
+    width: 1.2rem;
+    height: 0.667rem;
+    border-radius: 9999px;
+    transition: background-color 0.1s, border 0.1s;
+    box-shadow: 0 0 0.067rem rgba(0, 0, 0, 0.4);
+    position: relative;
+    &-btn {
+        position: absolute;
+        border-radius: 50%;
+        height: 0.667rem;
+        width: 0.667rem;
+        background-color: #fff;
+        box-shadow: 0 0.013rem 0.067rem rgba(0, 0, 0, 0.4);
+        left: 0;
+        top: 0;
+        transition: left 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
+    }
+}

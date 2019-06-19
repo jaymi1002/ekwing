@@ -1,0 +1,58 @@
+/*
+* @Author: lifangfang
+* @Date:   2019-03-28 18:46:03
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-06-12 11:51:01
+*/
+
+@import '../../../style/base/variables.scss';
+$itemHight:0.933rem;
+.e-datetime {
+	width: 100%;
+	background-color: #fff;
+    &-top {
+        display: flex;
+        height: 1.2rem;
+        line-height: 1.2rem;
+        justify-content: space-between;
+		border-bottom: 0.013rem solid #e0e0e0;
+    }
+    &-content {
+        height: $itemHight*7;
+        position: relative;
+        display: flex;
+        padding:0 1.067rem;
+        .time-item {
+            height: $itemHight;
+            line-height: 0.933rem;
+            text-align: center;
+        }
+        .placeholder {
+            height: $itemHight*3;
+        }
+        .scroller-indicator {
+            position: absolute;
+            width: 100%;
+            height: $itemHight;
+            top: $itemHight * 3;
+            left: 0;
+            border-top: 0.013rem solid #e0e0e0;
+            border-bottom: 0.013rem solid #e0e0e0;
+        }
+    }
+    &-content-time{
+        padding:0 2.667rem;
+    }
+    .scroller-indicator {
+        position: absolute;
+        width: 100%;
+        height: $itemHight;
+        top: $itemHight * 3;
+        left: 0;
+        border-top: 0.013rem solid #e7e7e7;
+        border-bottom: 0.013rem solid #e7e7e7;
+    }
+    .scroller-wrap{
+        flex:1;
+    }
+}

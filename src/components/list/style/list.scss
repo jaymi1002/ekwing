@@ -1,0 +1,45 @@
+/*
+* @Author: lifangfang
+* @Date:   2019-03-22 17:47:25
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-06-04 19:33:40
+*/
+
+@import "../../../style/base/variables";
+.e-list {
+    position: relative;
+}
+
+//side & main
+.e-item {
+    padding: 0.267rem 0.4rem;
+    position: relative;
+    display: flex;
+    box-sizing: border-box;
+    overflow: hidden;
+    .e-item-side {
+        flex: 0 0 auto;
+        display: flex;
+        margin-right: 0.267rem;
+        &-right {
+            margin-left: 0.267rem;
+            margin-right: 0;
+        }
+        img {
+            max-width: 100%;
+        }
+    }
+    .e-item-main {
+        flex: 1 1 0;
+        display: flex;
+    }
+    &.default-active:active {
+        background-color: #f9f9f9;
+    }
+}
+
+.e-separator {
+    height: 1px;
+    border-top-width: 1px;
+    border-top-style: solid;
+}
