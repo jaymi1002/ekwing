@@ -2,7 +2,7 @@
 * @Author: lifangfang
 * @Date:   2018-12-04 15:52:41
 * @Last Modified by:   lifangfang
-* @Last Modified time: 2019-06-19 15:16:46
+* @Last Modified time: 2019-06-25 19:09:39
 */
 //accordion
 export * from './components/accordion/index.js';
@@ -60,5 +60,3 @@ export * from './components/grid/index.js';
 export * from './components/swtich/index.js';
 //textarea
 export * from './components/textarea/index.js';
-//timeline
-export * from './components/timeline';

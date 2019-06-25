@@ -7,17 +7,19 @@
 export default {
     name: 'e-badge',
     props: {
-        color: {
-            type: String,
-            default: 'error',
-        },
+        color: String,
         label: [String, Number],
     },
     computed: {
         badgeClass() {
             let classes = [];
-            if (this.dot || this.label === undefined) {
+            if (!this.label) {
                 classes.push('dot');
+            }
+            if(this.color){
+                classes.push(`bg-${this.color}`);
+            }else{
+                classes.push('default');
             }
             return classes;
         }
@@ -28,20 +30,22 @@ export default {
 <style lang="scss">
 .e-badge {
     display: inline-block;
-    min-width: 0.4rem;
     padding: 0.013rem 0.107rem 0;
     text-align: center;
-    line-height: 1.2;
+    min-width: 0.4rem;
+    height: 0.4rem;
     border-radius: 9999px;
     font-weight: 500;
     box-sizing: border-box;
-    vertical-align: middle;
     color: #fff;
-    background-color: #FA5151;
     &.dot {
-        min-width: 0.267rem;
-        min-height: 0.267rem;
+        min-width: unset;
+        width: 0.267rem;
+        height: 0.267rem;
         padding: 0;
+    }
+    &.default{
+        background-color: #FA5151;
     }
 }
 

@@ -13,10 +13,6 @@
 import {getSelfIndex} from '../../../helpers/parent-children.js';
 export default {
     name: 'e-grid-item',
-    props: {
-        label: String,
-        icon: String,
-    },
     data(){
     	return {
     		selfIndex:0

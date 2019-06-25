@@ -1,5 +1,5 @@
 <template>
-    <e-modal :direction="direction" ref="modal" :mask-click-disabled="maskClickDisabled">
+    <e-modal direction="bottom" ref="modal" :mask-click-disabled="maskClickDisabled">
         <div class="e-actionsheet-wrap">
             <div class="main">
                 <div class="header" :class="{horizontal:horizontal}" v-if="title || explain">
@@ -38,7 +38,7 @@
 list:{
         title:'北京烤鸭',
         disabled:false,
-        img:''
+        img:'',
     }
 */
 export default {
@@ -63,18 +63,6 @@ export default {
         },
         maskClickDisabled: Boolean,
         noCancel: Boolean,
-    },
-    computed: {
-        direction() {
-            if (this.middle) {
-                return 'middle';
-            } else {
-                return 'bottom';
-            }
-        },
-        hasHeader() {
-            return !!this.$slots.header;
-        }
     },
     methods: {
         show() {

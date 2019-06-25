@@ -18,7 +18,6 @@ export default {
                     classes.push(this.activeClass);
                     return classes;
                 }
-                console.log(11)
                 classes.push('default-active');
                 return classes;
             }

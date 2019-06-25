@@ -4,7 +4,6 @@
             <p class="title font16 bold">
                 <slot name="title">{{title}}</slot>
             </p>
-            <e-separator :bd-color="bdColor"></e-separator>
         </template>
         <slot></slot>
     </div>
@@ -26,11 +25,9 @@ export default {
                 return ['radio','checkbox'].indexOf(value) > -1;
             }
         },
-        bdColor:String,
         reverse:Boolean,
-        noBorder:Boolean,
         touchActive: Boolean,
-        activeClass:String,
+        activeClass:[String,Array]
     },
     mounted(){
     },

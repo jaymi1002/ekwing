@@ -2,7 +2,7 @@
  * @Author: lifangfang
  * @Date:   2019-03-21 17:55:55
  * @Last Modified by:   lifangfang
- * @Last Modified time: 2019-05-23 17:19:19
+ * @Last Modified time: 2019-06-21 16:15:56
  */
 import eAjaxBar from './eAjaxBar';
 import namespace from '../../../helpers/utils/namespace';
@@ -37,8 +37,8 @@ function ajaxBar({ event, color, position, reverse }) {
     if (position) {
         instance.position = position;
     }
+    instance.reverse = reverse;
     instance.$mount();
-    instance.progress = 0;
     instance.start();
 }
 

@@ -1,20 +1,20 @@
 <template>
     <div class="e-scroll" :id="myId">
         <div class="e-scroll-main" ref="scrollMain">
-            <div class="pull-down font12" v-if="downActive" ref="pullDownDom">
+            <div class="pull-down font14" v-if="downActive" ref="pullDownDom">
                 <slot name="pullDrefreshtxt" v-if="!downOverMax && !isPullDown">下拉刷新~</slot>
-                <slot name="Realtimetxt" v-if="downOverMax">松手加载~</slot>
+                <slot name="realtimetxt" v-if="downOverMax">松手加载~</slot>
                 <slot name="loadertxt" v-if="isPullDown">加载中~</slot>
             </div>
             <div class="e-scroll-content" ref="scrollContent">
                 <slot></slot>
             </div>
-            <div class="pull-up font12" v-if="upActive && !isOver" ref="pullUpDom">
+            <div class="pull-up font14" v-if="upActive && !isOver" ref="pullUpDom">
                 <slot name="upLoadmoretxt" v-if="!upOverMax && !isPullUp">上拉加载更多~</slot>
-                <slot name="Realtimetxt" v-if="upOverMax">松手加载~</slot>
+                <slot name="realtimetxt" v-if="upOverMax">松手加载~</slot>
                 <slot name="loadertxt" v-if="isPullUp">加载中~</slot>
             </div>
-            <div class="pull-up font12" v-if="isOver">
+            <div class="pull-up font14" v-if="isOver">
                 <slot name="loaderendtxt">---我是最后的底线---</slot>
             </div>
         </div>
@@ -22,7 +22,7 @@
 </template>
 <script type="text/javascript">
 import IScroll from 'iscroll/build/iscroll-probe';
-import { width, height, style ,css} from '../../../helpers/dom.js';
+import { width, height, style, css } from '../../../helpers/dom.js';
 export default {
     name: 'e-scroll',
     props: {
@@ -101,6 +101,8 @@ export default {
         this.eScrollDom = document.querySelector('#' + this.myId);
         this.scrollMain = this.$refs.scrollMain;
         this.scrollContent = this.$refs.scrollContent;
+        this.pullDownDom = this.$refs.pullDownDom;
+        this.pullUpDom = this.$refs.pullUpDom;
         this.$nextTick(() => {
             this.iscroller = new IScroll('#' + this.myId, {
                 bounce: this.bounce,
@@ -126,7 +128,7 @@ export default {
             this.iscroller.on('scrollEnd', () => {
                 this.$emit('scrollEndHandle', { x: this.iscroller.x, y: this.iscroller.y });
             });
-            if(this.horizontal){
+            if (this.horizontal) {
                 setTimeout(() => {
                     this.setHorziontalStyle();
                 });
@@ -157,49 +159,36 @@ export default {
             });
             this.scrollMain.addEventListener('touchend', () => {
                 let scrollMainHeight = height(this.scrollMain),
-                    scrollDomHeight = height(this.eScrollDom),
-                    pullDownDomHeight,
-                    pullUpDomHeight;
-
+                    scrollDomHeight = height(this.eScrollDom);
                 this.downOverMax = false;
                 this.upOverMax = false;
-
                 //判断下拉
                 if (this.downActive) {
-                    pullDownDomHeight = height(this.pullDownDom);
-                    if (this.iscroller.y > 0) {
-                        this.isPullDown = true;
-                    }
-                    if (this.iscroller.y < 0 &&
-                        this.iscroller.y > -pullDownDomHeight) {
-                        setTimeout(() => {
-                            this.iscroller.scrollTo(0, -pullDownDomHeight, 500, IScroll.utils.ease.circular);
-                        });
-                    }
-                    if (!this.isPullDown && this.iscroller.y > -pullDownDomHeight) {
-                        this.iscroller.scrollTo(0, -pullDownDomHeight, 500, IScroll.utils.ease.circular);
-                    }
+                    this.judgePullDown({
+                        scrollMainHeight,
+                        scrollDomHeight
+                    });
                 }
 
 
                 //判断上拉
                 if (this.upActive) {
-                    pullUpDomHeight = height(this.pullUpDom);
-                    if (scrollMainHeight + this.iscroller.y - scrollDomHeight <= 1) {
-                        this.isPullUp = true;
-                    }
-                    if (!this.isPullUp &&
-                        scrollMainHeight + this.iscroller.y - scrollDomHeight > 0 &&
-                        scrollMainHeight + this.iscroller.y - scrollDomHeight < pullUpDomHeight) {
-                        setTimeout(() => {
-                            this.iscroller.scrollTo(0, pullUpDomHeight + scrollDomHeight - scrollMainHeight, 500, IScroll.utils.ease.circular);
-                        });
-                    }
+                    this.judgePullUp({
+                        scrollMainHeight,
+                        scrollDomHeight
+                    });
                 }
             });
 
             this.iscroller.on('scrollEnd', () => {
-                this.scrollMain.dispatchEvent(new Event('touchend'));
+                //停止自动加载更多
+                if (this.upActive) {
+                    this.judgePullUp({
+                        scrollMainHeight:height(this.scrollMain),
+                        scrollDomHeight:height(this.eScrollDom)
+                    });
+                }
+                
                 if (this.downActive && this.isPullDown) {
                     this.pullEnd('down');
                 }
@@ -207,19 +196,44 @@ export default {
                     this.pullEnd('up');
                 }
             });
-            if (this.downActive) {
-                this.pullEnd('down');
-            }
+            this.pullEnd('down');
         });
     },
-    updated() {
-    },
+    updated() {},
     computed: {
         myId() {
             return 'e-scroll' + this._uid;
         }
     },
     methods: {
+        judgePullUp({ scrollMainHeight, scrollDomHeight }) {
+            let pullUpDomHeight = height(this.pullUpDom);
+            if (scrollMainHeight + this.iscroller.y - scrollDomHeight <= 1) {
+                this.isPullUp = true;
+            }
+            if (!this.isPullUp &&
+                scrollMainHeight + this.iscroller.y - scrollDomHeight > 0 &&
+                scrollMainHeight + this.iscroller.y - scrollDomHeight < pullUpDomHeight) {
+                setTimeout(() => {
+                    this.iscroller.scrollTo(0, pullUpDomHeight + scrollDomHeight - scrollMainHeight, 500, IScroll.utils.ease.circular);
+                });
+            }
+        },
+        judgePullDown({ scrollMainHeight, scrollDomHeight }) {
+            let pullDownDomHeight = height(this.pullDownDom);
+            if (this.iscroller.y > 0) {
+                this.isPullDown = true;
+            }
+            if (this.iscroller.y < 0 &&
+                this.iscroller.y > -pullDownDomHeight) {
+                setTimeout(() => {
+                    this.iscroller.scrollTo(0, -pullDownDomHeight, 500, IScroll.utils.ease.circular);
+                });
+            }
+            if (!this.isPullDown && this.iscroller.y > -pullDownDomHeight) {
+                this.iscroller.scrollTo(0, -pullDownDomHeight, 500, IScroll.utils.ease.circular);
+            }
+        },
         reInitActive() {
             if (this.pullUpActive) {
                 this.upActive = true;
@@ -233,13 +247,13 @@ export default {
                 elements = this.scrollContent.children;
             for (var i = 0; i < elements.length; i++) {
                 let computedStyle = window.getComputedStyle(elements[i]);
-                width += (elements[i].offsetWidth + parseFloat(computedStyle.getPropertyValue('margin-left'), 10) + parseFloat(computedStyle.getPropertyValue('margin-right'), 10));
+                width += (Math.ceil(elements[i].offsetWidth + parseFloat(computedStyle.getPropertyValue('margin-left'), 10) + parseFloat(computedStyle.getPropertyValue('margin-right'), 10)) + 1);
             }
-            css(this.scrollContent,{
-                width:`${width + 1}px`
+            css(this.scrollContent, {
+                width: `${width}px`
             });
-            css(this.scrollMain,{
-                width:`${width + 1}px`
+            css(this.scrollMain, {
+                width: `${width}px`
             });
             this.iscroller.refresh();
         },
@@ -261,7 +275,6 @@ export default {
                 scrollMainMinHeight += this.pullDownDom.offsetHeight;
             }
             this.scrollMain.style.minHeight = scrollMainMinHeight + 'px';
-
             //滑到顶部pullDownDom下
             if (this.downActive) {
                 this.iscroller.scrollTo(0, -this.pullDownDom.offsetHeight);
@@ -274,6 +287,13 @@ export default {
         },
         pullEnd(str) {
             if (str === 'down') {
+                if(!this.downActive){
+                    this.reInitActive();
+                    this.$nextTick(() => {
+                        this.refresh();
+                    });
+                    return false;
+                }
                 this.$emit('pullDownHandle', () => {
                     this.reInitActive();
                     this.$nextTick(() => {

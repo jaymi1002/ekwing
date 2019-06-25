@@ -1,9 +1,9 @@
 <template>
     <div class="e-cir-progress">
-        <svg width="100" height="100" viewBox="0 0 100 100" style="width:100%;height:100%;">
-            <path :d="relativePath" fill="transparent" stroke-width="2.5" :stroke="relativeColor" />
-            <path ref="currentRing" class="current-ring" :d="currentPath" fill="transparent" stroke-width="3" :stroke="currentColor" :stroke-dasharray="strokeDasharray" />
-            <circle v-show="!noCirCleBar" ref="circle" class="cir-progress-circle" :cx="startX" :cy="startY" r="4" :fill="currentColor" />
+        <svg viewBox="0 0 100 100" style="width:100%;height:100%;">
+            <path class="realtive-path" :class="relativeClass" :d="relativePath" fill="transparent" :stroke-width="strokeWidth"/>
+            <path ref="currentRing" class="current-ring" :class="currentClass" :d="currentPath" fill="transparent" :stroke-width="strokeWidth" :stroke-dasharray="strokeDasharray" />
+            <circle v-show="!noCirCleBar" ref="circle" class="cir-progress-circle" :class="circleClass" :cx="startX" :cy="startY" r="4"/>
         </svg>
         <div class="cir-progress-content">
             <slot></slot>
@@ -12,6 +12,7 @@
 </template>
 <script type="text/javascript">
 let PI = Math.PI;
+import {cssTransform,css,cssTransition} from '../../../helpers/dom';
 export default {
     name: 'e-cir-progress',
     props: {
@@ -22,34 +23,46 @@ export default {
                 return value >= 0 && value <= 100;
             }
         },
-        relativeColor: {
+        color: {
             type: String,
-            default: '#8ddcf4'
+            default: 'primary'
         },
-        currentColor: {
-            type: String,
-            default: '#fef38e'
+        btnColor:{
+            type:String,
+            default: 'primary'
         },
         initDeg: {
             type: Number,
             default: 45,
         },
         noCirCleBar: Boolean,
+        strokeWidth:{
+            type: Number,
+            default: 3
+        }
     },
     mounted() {
-        let _this = this;
-        setTimeout(function() {
-            _this.currentProgress = _this.progress;
+        setTimeout(() => {
+            this.currentProgress = this.progress;
         }, 100);
     },
     data() {
         return {
-            r: 48,
+            r: 45,
             currentProgress: 0,
             degree: 0
         }
     },
     computed: {
+        relativeClass(){
+            return [`stroke-${this.color}`];
+        },
+        currentClass(){
+            return [`stroke-${this.color}`];
+        },
+        circleClass(){
+            return [`fill-${this.btnColor}`];
+        },
         startX() {
             return 50 - Math.floor(Math.sin(this.initDeg * PI / 180) * 1000) / 1000 * this.r;
         },
@@ -77,7 +90,7 @@ export default {
                 endY = 0,
                 degree = this.initDeg + (this.currentProgress / 100 * (360 - 2 * this.initDeg));
             this.degree = degree;
-            if (this.currentProgress > 50) {
+            if (this.degree - this.initDeg > 180) {
                 largeArcFlag = 1;
             } else {
                 largeArcFlag = 0;
@@ -89,10 +102,10 @@ export default {
     },
     methods: {
         disableAnimate() {
-            this.$refs.currentRing.style.transition = 'unset';
+            css(this.$refs.currentRing,cssTransition('unset'));
         },
         activeAnimate() {
-            this.$refs.currentRing.style.transition = 'stroke-dasharray 1s ease-in-out';
+            css(this.$refs.currentRing,cssTransition('stroke-dasharray 1s ease-in-out'));
         }
     },
     watch: {
@@ -101,11 +114,11 @@ export default {
             this.currentProgress = newVal;
         },
         currentProgress(newVal) {
-            let _this = this;
-            this.$nextTick(function() {
-                _this.$refs.currentRing.style['stroke-dasharray'] = `${2 * Math.PI * _this.r * (_this.degree - _this.initDeg) / 360} ${2 * PI * _this.r}`;
-                _this.$refs.circle.style.transform = `rotate(${_this.degree - _this.initDeg}deg)`;
-                _this.$refs.circle.style['-webkit-transform'] = `rotate(${_this.degree - _this.initDeg}deg)`;
+            this.$nextTick(() => {
+                css(this.$refs.currentRing,{
+                    'stroke-dasharray' : `${2 * Math.PI * this.r * (this.degree - this.initDeg) / 360} ${2 * PI * this.r}`
+                });
+                css(this.$refs.circle,cssTransform(`rotate(${this.degree - this.initDeg}deg)`));
             });
         }
     }

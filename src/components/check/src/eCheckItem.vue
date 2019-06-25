@@ -11,7 +11,6 @@
                 <e-icon v-if="iconType" :type="iconType" :disabled="$parent.disabled" :color="iconColor" :size="$parent.iconSize"></e-icon>
             </e-item-side>
         </e-item>
-        <e-separator :bd-color="$parent.bdColor" v-if="!$parent.noBorder"></e-separator>
     </div>
 </template>
 <script type="text/javascript">

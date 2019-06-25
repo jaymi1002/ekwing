@@ -21,7 +21,10 @@ function getTranslateStyle({ horizontal, per, reverse }) {
 export default {
     name: 'e-ajax-bar',
     props: {
-        color: String,
+        color: {
+            type:String,
+            default:'primary'
+        },
         position: {
             type: String,
             default: 'top',
@@ -63,11 +66,11 @@ export default {
     },
     methods: {
         start() {
-            this.progress = 0;
             this.calls++;
             if (this.calls > 1) {
                 return;
             }
+            this.progress = 0;
             document.body.appendChild(this.$el);
             clearTimeout(this.timer);
             this.show = true;

@@ -2,10 +2,11 @@
 * @Author: lifangfang
 * @Date:   2019-05-17 14:57:36
 * @Last Modified by:   lifangfang
-* @Last Modified time: 2019-06-04 11:11:45
+* @Last Modified time: 2019-06-24 19:59:25
 */
 @import './button.scss';
 @import './text.scss';
+@import './bg.scss';
 @import './comm/example.scss';
 
 
@@ -20,11 +21,25 @@
 		}
 	}
 }
-@each $key,$var in $text {
+@each $key,$var in $colors {
 	.text-#{$key} {
 		color:$var;
 	}
 	.bg-#{$key} {
-		background-color:$var;
+		background-color: $var
 	}
+	.bd-#{$key} {
+		border-color: $var
+	}
+	.stroke-#{$key}{
+		stroke:$var;
+	}
+	.fill-#{$key}{
+		fill:$var;
+	}
+
+}
+
+.input-wrap{
+	height: 1.333rem;
 }

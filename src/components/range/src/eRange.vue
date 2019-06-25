@@ -8,10 +8,10 @@
                 <div class="e-range-outter" :class="bgColorClass"></div>
                 <div class="e-range-inner" :class="bgColorClass" :style="{width:(width-left)+'%',left:left+'%'}"></div>
                 <div class="e-range-btn" v-if="type === 1" :style="{left:left+'%'}" v-touch-pan.horizontal="_leftTouchPanCallBack">
-                    <div class="tip">{{type === 0 ? value : value[0]}}</div>
+                    <div class="tip" v-if="tip">{{type === 0 ? value : value[0]}}</div>
                 </div>
                 <div class="e-range-btn" ref="rangeBtn" :style="{left:width+'%'}" v-touch-pan.horizontal="_rightTouchPanCallBack">
-                    <div class="tip">{{type === 0 ? value : value[1]}}</div>
+                    <div class="tip" v-if="tip">{{type === 0 ? value : value[1]}}</div>
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@ export default {
         },
         color: {
             type: String,
-            default: 'blue'
+            default: 'primary'
         },
         value: {
             type: [Number, Array],
@@ -48,7 +48,8 @@ export default {
             type: Number,
             default: 1
         },
-        sideShow: Boolean
+        sideShow: Boolean,
+        tip:Boolean
     },
     data() {
         return {

@@ -49,7 +49,9 @@ export default {
 </script>
 <style lang="scss">
 .e-separator {
-	max-width: 100%;
+    max-width: 100%;
+    height: 1px;
+    border-top-width: 1px;
 }
 
 </style>

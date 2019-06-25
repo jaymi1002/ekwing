@@ -2,7 +2,7 @@
 * @Author: lifangfang
 * @Date:   2019-03-27 17:54:24
 * @Last Modified by:   lifangfang
-* @Last Modified time: 2019-06-11 14:06:32
+* @Last Modified time: 2019-06-20 15:46:49
 */
 
 @import '../../../style/base/variables.scss';
@@ -47,21 +47,21 @@
         border-radius: 0.133rem;
     }
     .actionsheet-item.disabled{
-        & > *{
-            opacity:0.2;
-        }
+        opacity:0.2;
         &:active{
             background-color: unset;
         }
     }
     .actionsheet-list-horizontal{
-        padding: 0.4rem 0;
+        padding: 0.133rem 0;
         border:none;
         .actionsheet-item{
             line-height: 1.5;
             height: unset;
             border:none;
-            padding:0;
+        }
+        .actionsheet-item.disabled{
+            opacity: 0.2;
         }
         .icon-img{
             width: 0.933rem;

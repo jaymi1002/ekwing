@@ -4,15 +4,14 @@
             <e-item>
                 <e-item-main>
                     <slot name="title">
-                        <p class="font16 text-g3 lh3">{{title}}</p>
+                        <p class="font16 text-g3 lh1-5">{{title}}</p>
                     </slot>
                 </e-item-main>
                 <e-item-side>
-                    <e-icon v-if="!$parent.noArrow" :class="[selfInActive ? 'arrow-up' : 'arrow-down',$parent.animate ? 'arrow-animate' : '']" type="arrow-up" :size="20" color="g6"></e-icon>
+                    <e-icon v-if="!$parent.noArrow" :class="[selfInActive ? 'arrow-up' : 'arrow-down',$parent.animate ? 'arrow-animate' : '']" type="arrow-up" :size="$parent.iconSize" :color="$parent.iconColor"></e-icon>
                 </e-item-side>
             </e-item>
         </div>
-        <e-separator v-if="!selfInActive"></e-separator>
         <transition :name="transitionName" @enter="transitionEnter" @leave="transitionLeave">
             <div class="accordion-item-content" v-show="selfInActive">
                 <div ref="content" class="font14">
@@ -20,6 +19,7 @@
                 </div>
             </div>
         </transition>
+        <e-separator></e-separator>
     </li>
 </template>
 <script type="text/javascript">

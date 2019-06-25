@@ -1,5 +1,5 @@
 <template>
-    <a :href="href" class="e-btn font14" 
+    <a href="javascript:;" class="e-btn font14" 
         @click="proxyClick" 
         :class="classes" 
         :style="styles">
@@ -29,10 +29,6 @@ export default {
             }
         },
         plain: Boolean,
-        href: {
-            type: String,
-            default: 'javascript:;'
-        },
         activeType: {
             type: String,
             default: 'opacity',

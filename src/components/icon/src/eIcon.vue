@@ -1,5 +1,8 @@
 <template>
     <i class="iconfont" @click="proxyClick" v-bind:class="classes" :style="styles">
+        <span class="e-icon-error" v-if="!type">
+            error
+        </span>
     </i>
 </template>
 <script type="text/javascript">
@@ -16,13 +19,11 @@ export default {
             type: Number,
             default: 14,
         },
-        color: String,
+        color: {
+            type:String,
+            default:'primary'
+        },
         disabled: Boolean,
-    },
-    data() {
-        return {
-
-        }
     },
     computed: {
         classes() {
@@ -40,4 +41,9 @@ export default {
 }
 
 </script>
+<style lang="scss">
+    .e-icon-error{
+        color: #FA5151;
+    }
+</style>
 

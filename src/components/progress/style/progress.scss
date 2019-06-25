@@ -2,34 +2,15 @@
 * @Author: lifangfang
 * @Date:   2019-04-04 16:12:34
 * @Last Modified by:   lifangfang
-* @Last Modified time: 2019-04-15 17:45:32
+* @Last Modified time: 2019-06-21 15:54:42
 */
-
-.e-progress {
-    width: 100%;
-    height: 1.2rem;
-    padding-right: 0.267rem !important;
-    .bar {
-        box-sizing: border-box;
-    }
-    .bar-outter {
-        width: 100%;
-        height: 0.093rem;
-        background-color: #e5e5e5;
-        border-radius: 999px;
-    }
-    .bar-inner {
-        height: 100%;
-        border-radius: 999px;
-        -webkit-transition: width 300ms linear;
-        transition: width 300ms linear;
-    }
-}
-
 .e-cir-progress {
     position: relative;
     .current-ring {
         transition: stroke-dasharray 1s ease-in-out;
+    }
+    .realtive-path{
+        opacity:0.2;
     }
     .cir-progress-circle {
         transform-origin: 50px 50px;

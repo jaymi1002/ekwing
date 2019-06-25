@@ -14,15 +14,16 @@ export default {
     props: {
         max: Number,
         min: Number,
-        defaultItemClass: String,
-        selectedItemClass: String,
-        disabledItemClass: String,
+        defaultItemClass: [String,Array],
+        selectedItemClass: [String,Array],
+        disabledItemClass: [String,Array],
         type: {
             type: String,
             default: 'radio'
         },
         value: [String, Number, Array, Object],
         disabled: Boolean,
+        tip:Boolean
     },
     created() {
         if (this.type === 'checkbox') {

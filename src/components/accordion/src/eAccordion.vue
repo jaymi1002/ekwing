@@ -20,7 +20,17 @@ export default {
         },
         radio: Boolean,
         animate: Boolean,
-        noArrow: Boolean
+        noArrow: Boolean,
+
+        //icon设置 type默认是arrow-up
+        iconColor:{
+            type:String,
+            default:'g6'
+        },
+        iconSize:{
+            type:Number,
+            default:20
+        }
     },
     data() {
         return {

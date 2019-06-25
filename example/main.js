@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import ekwing from '@';
-import '../dist/index.css';
+// import '@/index.css';
 
 import './components';
 import './scss/index.scss';

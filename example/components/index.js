@@ -2,14 +2,15 @@
 * @Author: lifangfang
 * @Date:   2019-06-04 11:31:44
 * @Last Modified by:   lifangfang
-* @Last Modified time: 2019-06-04 11:34:34
+* @Last Modified time: 2019-06-25 15:26:32
 */
 import Vue from 'vue';
 import stuHeader from './comm/stuHeader.vue';
-Vue.component(stuHeader.name, stuHeader);
+import infoTable from './comm/infoTable.vue';
+import paramTable from './comm/paramTable.vue';
+import areaAccordion from './accordion/areaAccordion';
 
-// for (let key in components) {
-// 	if (components[key].name) {
-// 		Vue.component(components[key].name, components[key]);
-// 	}
-// }
+Vue.component(stuHeader.name, stuHeader);
+Vue.component(areaAccordion.name, areaAccordion);
+Vue.component(infoTable.name, infoTable);
+Vue.component(paramTable.name, paramTable);

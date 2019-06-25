@@ -4,7 +4,7 @@
     </div>
 </template>
 <script type="text/javascript">
-import { width, css } from '../../../helpers/dom.js';
+import { width, css, style } from '../../../helpers/dom.js';
 export default {
     name: 'e-switch',
     model: {
@@ -13,7 +13,10 @@ export default {
     },
     props: {
         value: Boolean,
-        color: String,
+        color: {
+            type: String,
+            default: 'primary'
+        }
     },
     computed: {
         switchClass() {
@@ -27,8 +30,16 @@ export default {
     },
     data() {
         return {
-            active: this.value
+            active: this.value,
+            activeBgColor: null,
         }
+    },
+    created() {
+        let div = document.createElement('div');
+        div.classList.add(`bg-${this.color}`);
+        document.body.appendChild(div);
+        this.activeBgColor = style(div, 'background-color');
+        div.remove();
     },
     methods: {
         trigger() {
@@ -37,8 +48,8 @@ export default {
         pan(value) {
             let switchWidth = width(this.$el);
             let switchBtnWidth = width(this.$refs.switchBtn);
-            if (!this.active && value.direction === 'right'){
-                if(value.distance.x < switchWidth - switchBtnWidth){
+            if (!this.active && value.direction === 'right') {
+                if (value.distance.x < switchWidth - switchBtnWidth) {
                     css(this.$refs.switchBtn, {
                         left: value.distance.x + 'px'
                     });
@@ -49,13 +60,13 @@ export default {
                             this.switchFalse();
                         }
                     }
-                }else{
+                } else {
                     this.active = true;
                 }
             }
 
-            if (this.active && value.direction === 'left'){
-                if(value.distance.x < switchWidth - switchBtnWidth){
+            if (this.active && value.direction === 'left') {
+                if (value.distance.x < switchWidth - switchBtnWidth) {
                     css(this.$refs.switchBtn, {
                         left: (switchWidth - switchBtnWidth - value.distance.x) + 'px'
                     });
@@ -66,7 +77,7 @@ export default {
                             this.switchTrue();
                         }
                     }
-                }else{
+                } else {
                     this.active = false;
                 }
             }
@@ -91,6 +102,17 @@ export default {
         active(newVal) {
             this.$emit('change', this.active);
             newVal ? this.switchTrue() : this.switchFalse();
+        },
+        switchClass() {
+            if (this.active) {
+                css(this.$el, {
+                    'box-shadow': `0 0 0.067rem ${this.activeBgColor}`
+                });
+            } else {
+                css(this.$el, {
+                    'box-shadow': `0 0 0.067rem rgba(0, 0, 0, 0.4)`
+                });
+            }
         }
     }
 }

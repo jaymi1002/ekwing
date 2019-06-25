@@ -1,8 +1,8 @@
 <template>
     <div class="time_cir">
         <svg width="440" height="440" viewBox="0 0 440 440" style="width:100%;height:100%;">
-            <circle :class="innerClasses"  cx="220" cy="220" :r="radius" :stroke-width="strokeWidth" fill="none"></circle>
-            <circle :class="outterClasses" cx="220" cy="220" :r="radius" :stroke-width="strokeWidth" fill="none" :stroke-dasharray="dasharray"></circle>
+            <circle class="inner" :class="innerClasses"  cx="220" cy="220" :r="radius" :stroke-width="strokeWidth" fill="none"></circle>
+            <circle class="outer" :class="outterClasses" cx="220" cy="220" :r="radius" :stroke-width="strokeWidth" fill="none" :stroke-dasharray="dasharray"></circle>
         </svg>
     </div>
 </template>
@@ -10,13 +10,9 @@
 export default {
     name: 'e-ring',
     props: {
-        innerColor: {
+        color: {
             type: String,
-            default: 'transparent',
-        },
-        outerColor: {
-            type: String,
-            default: 'blue'
+            default: 'primary'
         },
         direction: {
             type: String,
@@ -45,12 +41,12 @@ export default {
             if(this.active){
                 classes.push('active');
             }
-            classes.push(`stroke-${this.outerColor}`);
+            classes.push(`stroke-${this.color}`);
             classes.push(this.direction);
             return classes;
         },
         innerClasses(){
-            return `stroke-${this.innerColor}`;
+            return `stroke-${this.color}`;
         },  
         dasharray() {
             let girth = this.radius * 2 * Math.PI;

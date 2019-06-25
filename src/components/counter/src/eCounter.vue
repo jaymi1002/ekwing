@@ -1,13 +1,12 @@
 <template>
 	<div class="e-counter">
-		<e-input type="number" align="center" v-model="currentValue">
-			<e-button slot="label" :width="100" :height="50" :theme="btnTheme" plain @click="reduce">
-				<e-icon type="reduce" :size="iconSize"></e-icon>
-			</e-button>
-			<e-button :width="100" :height="50" plain :theme="btnTheme" @click="plus">
-				<e-icon type="plus" :size="iconSize"></e-icon>
-			</e-button>
-		</e-input>
+		<e-button slot="label" :width="110" :height="50" inline :theme="btnTheme" plain @click="reduce">
+			<e-icon type="reduce" :size="iconSize"></e-icon>
+		</e-button>
+		<input class="e-counter-input font14" type="number" v-model="currentValue">
+		<e-button :width="110" :height="50" plain inline :theme="btnTheme" @click="plus">
+			<e-icon type="plus" :size="iconSize"></e-icon>
+		</e-button>
 	</div>
 </template>
 <script type="javascript:;">
@@ -22,7 +21,10 @@
 				type:Number,
 				default:0
 			},
-			btnTheme:String,
+			btnTheme:{
+				type:String,
+				default:'primary'
+			},
 			iconSize:{
 				type:Number,
 				default:20
@@ -55,6 +57,11 @@
 <style lang="scss">
 	.e-counter{
 		display: inline-block;
-		width: 4.0rem;
+		.e-counter-input{
+			margin: 0 0.133rem;
+			width: 0.667rem;
+			text-align: center;
+			line-height: 2;
+		}
 	}
 </style>

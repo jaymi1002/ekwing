@@ -86,8 +86,8 @@ export default {
         let index = ['YYYY-MM-DD', 'YYYY-MM-DD HH:MM', 'HH:MM' , 'YYYY-MM-DD HH'].indexOf(this.format);
         let types = ['YMD','YMDHM','HM','YMDH'];
         let date = getNowYMDHM();
-        let dateStr = [date.year,date.month,date.date].join('-');
-        let timeStr = [date.hour,date.min].join(':');
+        let dateStr = [date.year,coverZore(date.month),coverZore(date.date)].join('-');
+        let timeStr = [coverZore(date.hour),coverZore(date.min)].join(':');
         this.type = types[index];
         switch(this.type) {
             case 'YMD':
@@ -108,9 +108,13 @@ export default {
             case 'YMDH':
                 this.startDate = this.start ? this.start : '1994-01-01 00';
                 this.endDate = this.end ? this.end : '2024-12-31 23';
-                this.currentDate = [dateStr,date.hour];
+                this.currentDate = [dateStr,date.hour].join(' ');
                 break;
         }
+        if(this.value){
+            this.currentDate = this.value;
+        }
+        this.splitDate();
     },
     mounted() {
     },
@@ -247,14 +251,14 @@ export default {
                 let [fullDate, time] = this.currentDate.split(' ');
                 if (fullDate) {
                     let [year, month, date] = fullDate.split('-');
-                    this.yearIndex = this.year.indexOf(year);
-                    this.monthIndex = this.month.indexOf(month);
-                    this.dateIndex = this.date.indexOf(date);
+                    this.yearIndex = this.year.indexOf(year+'年');
+                    this.monthIndex = this.month.indexOf(month+'月');
+                    this.dateIndex = this.date.indexOf(date+'日');
                 }
                 if (time) {
                     let [hour, min] = time.split(':');
-                    this.hourIndex = this.hour.indexOf(hour);
-                    this.minIndex = this.min.indexOf(coverZore(parseInt(min)) + '');
+                    this.hourIndex = this.hour.indexOf(hour+'时');
+                    this.minIndex = this.min.indexOf(min+ '分');
                 }
             }
         },
@@ -270,6 +274,12 @@ export default {
         },
     },
     watch: {
+        value(newVal){
+            if(this.currentDate !== newVal){
+                this.currentDate = newVal;
+                this.splitDate();
+            }
+        }
     }
 }
 

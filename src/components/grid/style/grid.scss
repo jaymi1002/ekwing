@@ -2,7 +2,7 @@
 * @Author: lifangfang
 * @Date:   2019-03-21 19:02:07
 * @Last Modified by:   lifangfang
-* @Last Modified time: 2019-06-18 19:44:01
+* @Last Modified time: 2019-06-21 10:40:28
 */
 .e-grid {
     overflow: hidden;
@@ -27,6 +27,7 @@
         border-right-style: solid;
         border-bottom-width: 1px;
         border-bottom-style: solid;
+        text-align: center;
         &.no-r-border {
             border-right: none;
         }

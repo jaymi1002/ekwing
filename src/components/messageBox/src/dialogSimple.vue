@@ -3,10 +3,12 @@
         <div class="e-dialog-simple">
             <div class="main">
                 <div class="top">
-                    <div class="top-text tc">
-                        <p class="title font16 bold text-g3">{{title}}</p>
-                        <p class="content font14 text-g6" v-html="content"></p>
-                    </div>
+                    <slot>
+                        <div class="top-text tc">
+                            <p class="title font16 bold text-g3">{{title}}</p>
+                            <p class="content font14 text-g6" v-html="content"></p>
+                        </div>
+                    </slot>
                 </div>
                 <div class="btn-wrap tc" v-if="type === 'alert'">
                     <e-button class="btn-item" :class="btnItemClass" :width="540" :height="96" inline @click="confirm" type="rect">

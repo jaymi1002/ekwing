@@ -1,30 +1,30 @@
 <template>
     <e-modal ref="modal" direction="bottom">
         <div class="e-calendar">
-            <div class="e-calendar-title fix font14" v-if="multiSelect">
+            <div class="e-calendar-title fix font16" v-if="multiSelect">
                 <a href="javascript:;" @click="hide" class="cancle left ml20 text-g9">
                     取消
                 </a>
                 <span>请选择日期</span>
-                <a href="javascript:;" @click="confirm" class="sure right mr20 text-g3">
+                <a href="javascript:;" @click="confirm" class="sure right mr20" :class="`text-${theme}`">
                     确定
                 </a>
             </div>
             <div class="e-calendar-top">
                 <div class="e-calendar-top-item">
-                    <e-icon type="arrow-left" color="g3" size="2em" @click="currentYear--"></e-icon>
+                    <e-icon type="arrow-left" color="g3" :size="20" @click="currentYear--"></e-icon>
                     <span class="font16 ml20 mr20">{{currentYear}}</span>
-                    <e-icon type="arrow-right" color="g3" size="2em" @click="currentYear++"></e-icon>
+                    <e-icon type="arrow-right" color="g3" :size="20" @click="currentYear++"></e-icon>
                 </div>
                 <div class="e-calendar-top-item">
-                    <e-icon type="arrow-left" color="g3" size="2em" @click="currentMonth--"></e-icon>
+                    <e-icon type="arrow-left" color="g3" :size="20" @click="currentMonth--"></e-icon>
                     <span class="font16 ml20 mr20">{{currentMonth}}</span>
-                    <e-icon type="arrow-right" color="g3" size="2em" @click="currentMonth++"></e-icon>
+                    <e-icon type="arrow-right" color="g3" :size="20" @click="currentMonth++"></e-icon>
                 </div>
             </div>
-            <div class="e-calendar-content font14">
+            <div class="e-calendar-content">
                 <table>
-                    <thead>
+                    <thead class="font16">
                         <tr>
                             <th>日</th>
                             <th>一</th>
@@ -35,7 +35,7 @@
                             <th>六</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="font15">
                         <tr v-for="(tr,row) in dateTable">
                             <td v-for="(td,col) in tr" class="tc" @click="select(row,col)">
                                 <span class="each-date" :class="judgeClass(row,col)">{{td.date}}</span>
@@ -79,6 +79,11 @@ export default {
         maxDate: [String],
         value: [String, Array],
         readonly: Boolean,
+
+        theme:{
+            type:String,
+            default:'primary'
+        },
     },
     data() {
         return {
@@ -168,12 +173,15 @@ export default {
             return this.currentMonth !== this.dateTable[row][col].month;
         },
         judgeClass(row, col) {
-            return {
-                selected: this.judgeSelected(row, col),
-                disabled: this.judgeDisabled(row, col),
-                'is-now': this.judgeIsNow(row, col),
-                'not-in': this.judgeIsNowMonth(row, col)
+            let classes = [];
+            if(this.judgeSelected(row, col)){
+                classes.push(`bg-${this.theme}`);
+                classes.push('selected');
             }
+            this.judgeDisabled(row, col) && classes.push('disabled');
+            this.judgeIsNow(row, col) && classes.push(`text-${this.theme}`);
+            this.judgeIsNowMonth(row, col) && classes.push('not-in');
+            return classes;
         },
         confirm() {
             this.hide();

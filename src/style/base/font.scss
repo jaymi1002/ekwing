@@ -2,7 +2,7 @@
 * @Author: lifangfang
 * @Date:   2018-12-25 15:12:59
 * @Last Modified by:   lifangfang
-* @Last Modified time: 2019-06-04 10:53:01
+* @Last Modified time: 2019-06-24 16:00:02
 */
 
 @import './variables';
@@ -28,6 +28,28 @@
         }
     // }
 }
+
+@for $i from  5 through 8{
+        .font#{$i*10} {
+            font-size: #{$i*10}px;
+        }
+        [data-dpr="2"] .font#{$i*10} {
+            font-size: #{$i*20}px;
+        }
+        [data-dpr="3"] .font#{$i*10} {
+            font-size: #{$i*30}px;
+        }
+        .lh#{$i*10}{
+            line-height: #{$i*10}px;
+        }
+        [data-dpr="2"] .lh#{$i*10} {
+            line-height: #{$i*20}px;
+        }
+        [data-dpr="3"] .lh#{$i*10} {
+            line-height: #{$i*30}px;
+        }
+}
+
 
 .lh1{
 	line-height: 1;

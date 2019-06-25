@@ -34,12 +34,15 @@ export default {
         itemClasses() {
             let classes = [];
             if (this.active) {
-                classes.push([this.$parent.selectedItemClass, 'e-checker-item-selected']);
+                classes.push(this.$parent.selectedItemClass);
+                classes.push('e-checker-item-selected');
             } else {
-                classes.push([this.$parent.defaultItemClass, 'e-checker-item-default']);
+                classes.push(this.$parent.defaultItemClass);
+                classes.push('e-checker-item-default');
             }
             if (this.$parent.disabled) {
-                classes.push(this.$parent.disabledItemClass, 'e-checker-item-disabled');
+                classes.push(this.$parent.disabledItemClass);
+                classes.push('e-checker-item-disabled');
             }
             return classes;
         },

@@ -2,19 +2,19 @@
 * @Author: lifangfang
 * @Date:   2019-03-28 14:13:52
 * @Last Modified by:   lifangfang
-* @Last Modified time: 2019-04-03 15:25:01
+* @Last Modified time: 2019-06-20 16:10:28
 */
 
 @import "../../../style/base/variables";
 .e-calendar {
-    background-color: map-get($colors, 'white');
+    background-color: #fff;
     width: 100%;
     .e-calendar-title {
         height: 1.067rem;
         line-height: 1.067rem;
         position: relative;
         text-align: center;
-        border-bottom: 0.013rem solid map-get($colors, 'ec');
+        border-bottom: 0.013rem solid #ececec;
     }
     .e-calendar-top {
         width: 100%;
@@ -48,7 +48,7 @@
             vertical-align: middle;
         }
         th {
-            background-color: map-get($colors, 'eee');
+            background-color: #eee;
         }
         .each-date {
             display: inline-block;
@@ -57,17 +57,16 @@
             vertical-align: middle;
             line-height: 0.667rem;
             border-radius: 50%;
-            color: map-get($colors, 'g3');
-            &.is-now {
-                color: map-get($colors, 'blue');
-            }
+            color: #333;
+            // &.is-now {
+            //     color: blue;
+            // }
             &.selected {
-                background-color: map-get($colors, 'blue');
-                color: map-get($colors, 'white');
+                // background-color: blue;
+                color:#fff;
             }
             &.disabled,&.not-in{
-                color: map-get($colors, 'g9');
-                background-color: map-get($colors, 'transparent');
+                opacity:0.3;
             }
 
         }

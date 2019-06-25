@@ -140,14 +140,11 @@
 
 /*图片*/
 
-.icon-pic:before {
+.icon-img-loading:before {
     content: '\e8d4';
 }
 
-.icon-pic-plain:before {
-    content: '\e8d3';
-}
-.icon-pic-error:before{
+.icon-img-error:before{
     content: '\e619';
 }
 

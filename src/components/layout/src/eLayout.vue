@@ -22,7 +22,9 @@ export default {
     },
     created(){
         vueBus.$on('headerChange',(height) => {
-            this.headerHeight = height;
+            if(this.$slots.header){
+                this.headerHeight = height;
+            }
         });
     },
     computed: {

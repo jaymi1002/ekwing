@@ -1,6 +1,6 @@
 {
   "name": "lifangfang",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "ekwing base UI components",
   "author": "lifangfang",
   "main": "./dist/index.js",
