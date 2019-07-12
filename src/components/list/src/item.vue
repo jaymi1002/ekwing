@@ -13,24 +13,23 @@ export default {
     computed: {
         itemclass() {
             let classes = [];
-            if(this.touchActive){
-                if(this.activeClass){
-                    classes.push(this.activeClass);
+            if (this.$parent.isList && this.$parent.touchActive) {
+                if (this.$parent.activeClass) {
+                    classes.push(this.$parent.activeClass);
                     return classes;
                 }
                 classes.push('default-active');
                 return classes;
             }
 
-            if (this.$parent.$options._componentTag === 'e-list' && this.$parent.touchActive) {
-                if(this.$parent.activeClass){
-                    classes.push(this.$parent.activeClass);
+            if (this.touchActive) {
+                if (this.activeClass) {
+                    classes.push(this.activeClass);
                     return classes;
                 }
                 classes.push('default-active');
+                return classes;
             }
-
-            return classes;
         }
     }
 }

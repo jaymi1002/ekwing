@@ -1,6 +1,7 @@
 <template>
     <e-layout>
-        <stu-header slot="header" title="activePop"></stu-header>
+        <stu-header title="activePop"></stu-header>
+        <e-content>
         <e-active-pop ref="activePop" type="confirm" image="http://res.ekwing.com/images/student/background_wordmate.png" btn-theme="primary" @cancelHandle="cancelHandle" @confirmHandle="confirmHandle">
             <template slot="title">我的</template>
             <template slot="content">
@@ -26,6 +27,7 @@
                 <template slot="title">额外</template>
             </param-table>
         </div>
+        </e-content>
     </e-layout>
 </template>
 <script type="text/javascript">

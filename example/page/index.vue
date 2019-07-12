@@ -1,6 +1,7 @@
 <template>
     <e-layout>
-        <stu-header slot="header" title="ek 基础组件"></stu-header>
+        <stu-header fixed title="ek 基础组件"></stu-header>
+        <e-content>
         <p class="font18 lh3 tc bold">UI组件</p>
         <e-grid show-vertical-dividers :cols="3">
             <e-grid-item v-for="el in UI" @click="go(el);">
@@ -46,7 +47,16 @@
                 <template slot="label">{{el}}</template>
             </e-grid-item>
         </e-grid>
-
+        <p class="font18 lh3 tc bold">手势自定义指令</p>
+        <e-grid show-vertical-dividers :cols="3">
+            <e-grid-item v-for="el in directives" @click="go(el);">
+                <template>
+                    <img slot="icon" src="https://cn.vuejs.org/images/logo.png" />
+                </template>
+                <template slot="label">{{el}}</template>
+            </e-grid-item>
+        </e-grid>
+        </e-content>
     </e-layout>
 </template>
 <script type="text/javascript">
@@ -59,7 +69,7 @@ export default {
             scroll: ['scroll', 'scrollPop', 'scrollPage'],
             check: ['checkIcon', 'checker', 'checkList', 'checkLevels'],
             // demoList:['accordion','actionsheet','ajaxbar','badge','button','buttonWrap','calendar','card','check','counter','datetime','grid','icon','img','input','layout','list','modal','progress','range','separator','scroll','scrollPop','scrollPage','switch','directives','textarea','test'],
-            // factList:['fact/getwordtoll']
+            directives:['directives']
         }
     },
     methods: {

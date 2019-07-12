@@ -1,10 +1,32 @@
 <template>
     <e-modal ref="modal" direction="bottom">
-        <div class="e-datetime">
-            <div class="e-datetime-top">
-                <a href="javascript:;" class="text-g9 ml20 font14" @click="hide">取消</a>
-                <a href="javascript:;" class="text-g3 mr20 font14" @click="sure">确定</a>
-            </div>
+        <div class="e-datetime text-g3">
+            <e-item class="e-datetime-top font14">
+                <e-item-side>
+                    <e-button-text @click="hide" :class="`text-${btnColor}`">
+                        <slot name="leftBtn">取消</slot>
+                    </e-button-text>
+                </e-item-side>
+                <e-item-main justify-content="center" class="font18">
+                    <div class="tc">
+                        <p class="font18" v-if="title || $slots.title">
+                            <slot name="title">
+                                {{title}}
+                            </slot>
+                        </p>
+                        <p class="font14 text-g9 mt10" v-if="label || $slots.label">
+                            <slot name="label">
+                                {{label}}
+                            </slot>
+                        </p>
+                    </div>
+                </e-item-main>
+                <e-item-side right>
+                    <e-button-text @click="sure" :class="`text-${btnColor}`">
+                        <slot name="rightBtn">确定</slot>
+                    </e-button-text>
+                </e-item-side>
+            </e-item>
             <div class="e-datetime-content">
                 <div class="scroller-wrap" v-if="type.indexOf('YMD') > -1">
                     <e-scroller ref="year" :list="year" v-model="yearIndex" :indicator="false" :wheel="wheel">
@@ -41,19 +63,25 @@ export default {
         event: 'change'
     },
     props: {
+        title: String,
+        label: String,
         format: {
             type: String,
             default: 'YYYY-MM-DD HH:MM',
             validator(value) {
-                return ['YYYY-MM-DD', 'YYYY-MM-DD HH:MM', 'HH:MM' , 'YYYY-MM-DD HH'].indexOf(value) > -1;
+                return ['YYYY-MM-DD', 'YYYY-MM-DD HH:MM', 'HH:MM', 'YYYY-MM-DD HH'].indexOf(value) > -1;
             }
         },
         start: String,
         end: String,
         value: String,
-        wheel:{
-            type:Boolean,
-            default:true
+        wheel: {
+            type: Boolean,
+            default: true
+        },
+        btnColor: {
+            type: String,
+            default: 'g3'
         }
     },
     data() {
@@ -62,15 +90,15 @@ export default {
             type: 'YMDHM',
 
             startYear: 0,
-            endYear:0,
+            endYear: 0,
             startMonth: 0,
-            endMonth:0,
+            endMonth: 0,
             startMonthDate: 0,
-            endMonthDate:0,
+            endMonthDate: 0,
             startHour: 0,
-            endHour:0,
+            endHour: 0,
             startMin: 0,
-            endMin:0,
+            endMin: 0,
 
             yearIndex: 0,
             monthIndex: 0,
@@ -78,18 +106,18 @@ export default {
             hourIndex: 0,
             minIndex: 0,
 
-            startDate:'',
-            endDate:'',
+            startDate: '',
+            endDate: '',
         }
     },
-    created(){
-        let index = ['YYYY-MM-DD', 'YYYY-MM-DD HH:MM', 'HH:MM' , 'YYYY-MM-DD HH'].indexOf(this.format);
-        let types = ['YMD','YMDHM','HM','YMDH'];
+    created() {
+        let index = ['YYYY-MM-DD', 'YYYY-MM-DD HH:MM', 'HH:MM', 'YYYY-MM-DD HH'].indexOf(this.format);
+        let types = ['YMD', 'YMDHM', 'HM', 'YMDH'];
         let date = getNowYMDHM();
-        let dateStr = [date.year,coverZore(date.month),coverZore(date.date)].join('-');
-        let timeStr = [coverZore(date.hour),coverZore(date.min)].join(':');
+        let dateStr = [date.year, coverZore(date.month), coverZore(date.date)].join('-');
+        let timeStr = [coverZore(date.hour), coverZore(date.min)].join(':');
         this.type = types[index];
-        switch(this.type) {
+        switch (this.type) {
             case 'YMD':
                 this.startDate = this.start ? this.start : '1994-01-01';
                 this.endDate = this.end ? this.end : '2024-12-31';
@@ -98,7 +126,7 @@ export default {
             case 'YMDHM':
                 this.startDate = this.start ? this.start : '1994-01-01 00:00';
                 this.endDate = this.end ? this.end : '2024-12-31 23:59';
-                this.currentDate = [dateStr,timeStr].join(' ');
+                this.currentDate = [dateStr, timeStr].join(' ');
                 break;
             case 'HM':
                 this.startDate = this.start ? this.start : '00:00';
@@ -108,32 +136,31 @@ export default {
             case 'YMDH':
                 this.startDate = this.start ? this.start : '1994-01-01 00';
                 this.endDate = this.end ? this.end : '2024-12-31 23';
-                this.currentDate = [dateStr,date.hour].join(' ');
+                this.currentDate = [dateStr, date.hour].join(' ');
                 break;
         }
-        if(this.value){
+        if (this.value) {
             this.currentDate = this.value;
         }
         this.splitDate();
     },
-    mounted() {
-    },
+    mounted() {},
     computed: {
         year() {
             this.startYear = this.startDateParse.year;
             this.endYear = this.endDateParse.year;
-            return packageToArray(this.startYear, this.endYear,'年');
+            return packageToArray(this.startYear, this.endYear, '年');
         },
         month() {
             if (this.selectYear != this.startYear &&
                 this.selectYear != this.endYear) {
                 this.startMonth = 1;
                 this.endMonth = 12;
-            } else if (this.selectYear == this.startYear && 
+            } else if (this.selectYear == this.startYear &&
                 this.selectYear != this.endYear) {
                 this.startMonth = this.startDateParse.month;
                 this.endMonth = 12;
-            } else if (this.selectYear == this.endYear && 
+            } else if (this.selectYear == this.endYear &&
                 this.selectYear != this.startYear) {
                 this.startMonth = 1;
                 this.endMonth = this.endDateParse.month;
@@ -141,7 +168,7 @@ export default {
                 this.startMonth = this.startDateParse.month;
                 this.endMonth = this.endDateParse.month;
             }
-            return packageToArray(this.startMonth, this.endMonth,'月');
+            return packageToArray(this.startMonth, this.endMonth, '月');
         },
         date() {
             let notStartYM = `${this.selectYear}-${this.selectMonth}` !== `${this.startYear}-${this.startMonth}`;
@@ -149,11 +176,11 @@ export default {
             if (notStartYM && notEndYM) {
                 this.startMonthDate = 1;
                 this.endMonthDate = getMonthDays(this.selectYear, this.selectMonth);
-            } else if (!notStartYM && 
+            } else if (!notStartYM &&
                 notEndYM) {
                 this.startMonthDate = this.startDateParse.date;
                 this.endMonthDate = getMonthDays(this.selectYear, this.selectMonth);
-            } else if (!notEndYM && 
+            } else if (!notEndYM &&
                 notStartYM) {
                 this.startMonthDate = 1;
                 this.endMonthDate = this.endDateParse.date;
@@ -161,7 +188,7 @@ export default {
                 this.startMonthDate = this.startDateParse.date;
                 this.endMonthDate = this.endDateParse.date;
             }
-            return packageToArray(this.startMonthDate, this.endMonthDate,'日');
+            return packageToArray(this.startMonthDate, this.endMonthDate, '日');
         },
         hour() {
             let notStartYMD = `${this.selectYear}-${this.selectMonth} ${this.selectDate}` !== `${this.startDateParse.year}-${this.startDateParse.month} ${this.startDateParse.date}`;
@@ -169,11 +196,11 @@ export default {
             if (notStartYMD && notEndYMD) {
                 this.startHour = 0;
                 this.endHour = 23;
-            } else if (!notStartYMD && 
+            } else if (!notStartYMD &&
                 notEndYMD) {
                 this.startHour = this.startDateParse.hour;
                 this.endHour = 23;
-            } else if (!notEndYMD && 
+            } else if (!notEndYMD &&
                 notStartYMD) {
                 this.startHour = 0;
                 this.endHour = this.endDateParse.hour;
@@ -181,7 +208,7 @@ export default {
                 this.startHour = this.startDateParse.hour;
                 this.endHour = this.endDateParse.hour;
             }
-            return packageToArray(this.startHour, this.endHour,'时');
+            return packageToArray(this.startHour, this.endHour, '时');
         },
         min() {
             let notStartYMDH = `${this.selectYear}-${this.selectMonth} ${this.selectDate}:${this.selectHour}` !== `${this.startYear}-${this.startMonth} ${this.startMonthDate}:${this.startHour}`;
@@ -189,11 +216,11 @@ export default {
             if (notStartYMDH && notEndYMDH) {
                 this.startMin = 0;
                 this.endMin = 59;
-            } else if (!notStartYMDH && 
+            } else if (!notStartYMDH &&
                 notEndYMDH) {
                 this.startMin = this.startDateParse.min;
                 this.endMin = 59;
-            } else if (!notEndYMDH && 
+            } else if (!notEndYMDH &&
                 notStartYMDH) {
                 this.startMin = 0;
                 this.endMin = this.endDateParse.min;
@@ -201,23 +228,23 @@ export default {
                 this.startMin = this.startDateParse.min;
                 this.endMin = this.endDateParse.min;
             }
-            return packageToArray(this.startMin, this.endMin,'分');
+            return packageToArray(this.startMin, this.endMin, '分');
         },
         dateFormat() {
             let YMD = [this.selectYear, coverZore(this.selectMonth), coverZore(this.selectDate)].join('-'),
                 HM = [coverZore(this.selectHour), coverZore(this.selectMin)].join(':');
-            switch(this.type) {
+            switch (this.type) {
                 case 'YMD':
                     return YMD;
                     break;
                 case 'YMDHM':
-                    return [YMD,HM].join(' ');
+                    return [YMD, HM].join(' ');
                     break;
                 case 'HM':
                     return HM;
                     break;
                 case 'YMDH':
-                    return [YMD,coverZore(this.selectHour)].join(' ');
+                    return [YMD, coverZore(this.selectHour)].join(' ');
             }
         },
         startDateParse() {
@@ -251,14 +278,14 @@ export default {
                 let [fullDate, time] = this.currentDate.split(' ');
                 if (fullDate) {
                     let [year, month, date] = fullDate.split('-');
-                    this.yearIndex = this.year.indexOf(year+'年');
-                    this.monthIndex = this.month.indexOf(month+'月');
-                    this.dateIndex = this.date.indexOf(date+'日');
+                    this.yearIndex = this.year.indexOf(year + '年');
+                    this.monthIndex = this.month.indexOf(month + '月');
+                    this.dateIndex = this.date.indexOf(date + '日');
                 }
                 if (time) {
                     let [hour, min] = time.split(':');
-                    this.hourIndex = this.hour.indexOf(hour+'时');
-                    this.minIndex = this.min.indexOf(min+ '分');
+                    this.hourIndex = this.hour.indexOf(hour + '时');
+                    this.minIndex = this.min.indexOf(min + '分');
                 }
             }
         },
@@ -274,8 +301,8 @@ export default {
         },
     },
     watch: {
-        value(newVal){
-            if(this.currentDate !== newVal){
+        value(newVal) {
+            if (this.currentDate !== newVal) {
                 this.currentDate = newVal;
                 this.splitDate();
             }
@@ -283,9 +310,9 @@ export default {
     }
 }
 
-function packageToArray(start, end,label) {
+function packageToArray(start, end, label) {
     let newArr = [];
-    while(start <= end){
+    while (start <= end) {
         newArr.push(coverZore(start) + label);
         start++;
     }

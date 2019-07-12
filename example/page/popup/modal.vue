@@ -1,6 +1,7 @@
 <template>
     <e-layout title="modal">
-        <stu-header slot="header" title="modal"></stu-header>
+        <stu-header title="modal"></stu-header>
+        <e-content>
         <e-check-list type="radio" v-model="value" default-type="no-check" active-type="check" :icon-size="20">
             <template v-for="(el,index) in checkList">
                 <e-check-item :value="index">
@@ -88,6 +89,7 @@
                 <template slot="title">额外</template>
             </param-table>
         </div>
+        </e-content>
     </e-layout>
 </template>
 <script type="text/javascript">

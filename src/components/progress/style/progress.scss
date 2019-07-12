@@ -2,15 +2,36 @@
 * @Author: lifangfang
 * @Date:   2019-04-04 16:12:34
 * @Last Modified by:   lifangfang
-* @Last Modified time: 2019-06-21 15:54:42
+* @Last Modified time: 2019-07-11 14:22:00
 */
+
+.e-progress {
+    position: relative;
+    height: 0.267rem;
+    .e-progress-outter {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 9999px;
+    }
+    .e-progress-inner {
+        height: 100%;
+        position: absolute;
+        border-radius: 9999px;
+        transition: width 1s linear;
+    }
+    .outer-default{
+        background-color: #f5f9ff
+    }
+    .inner-default{
+        background-color: #000;
+    }
+}
+
 .e-cir-progress {
     position: relative;
     .current-ring {
         transition: stroke-dasharray 1s ease-in-out;
-    }
-    .realtive-path{
-        opacity:0.2;
     }
     .cir-progress-circle {
         transform-origin: 50px 50px;
@@ -32,5 +53,14 @@
         .cir-progress-label {
             margin-top: 5%;
         }
+    }
+    .stop-start-default{
+        stop-color:#000;
+    }
+    .stop-end-default{
+        stop-color:#999;
+    }
+    .relative-default{
+        stroke: #f5f9ff;
     }
 }

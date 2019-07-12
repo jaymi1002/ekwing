@@ -1,53 +1,61 @@
 <template>
     <e-layout>
-        <stu-header slot="header">
+        <stu-header>
             <p class="font20">accordion</p>
         </stu-header>
-        <p class="tc lh3 font16">尝试一下</p>
-        <e-separator></e-separator>
-        <e-check-icon v-model="animate" text="animate" default-type="no-check" active-type="check" :icon-size="20"></e-check-icon>
-        <e-separator></e-separator>
-        <e-check-icon v-model="radio" text="radio" default-type="no-check" active-type="check" :icon-size="20"></e-check-icon>
-        <e-separator></e-separator>
-        <e-check-icon v-model="disabled" text="disabled" default-type="no-check" active-type="check" :icon-size="20"></e-check-icon>
-        <e-separator></e-separator>
-        <e-accordion class="mt20" :animate="animate" :radio="radio" :disabled="disabled">
-            <e-accordion-item v-for="item in list">
-                <template slot="title">
-                    <p class="font16">{{item.title}}</p>
-                </template>
-                <template slot="content">
-                    {{item.content}}
-                </template>
-            </e-accordion-item>
-        </e-accordion>
-
-        
-        <div class="font14 ptb30">
-            <param-table :list="accordionInfo">
-                <template slot="title">组件html tag：e-accordion</template>
-                <template slot="tip">必须设置字体图标 arrow-up</template>
-            </param-table>
-            <param-table :list="accordionExt">
-                <!-- <template slot="title">组件html tag：e-accordion</template> -->
-            </param-table>
-        </div>
-        <div class="font14 ptb30">
-            <param-table :list="accordionItemInfo">
-                <template slot="title">组件html tag：e-accordion-item</template>
-            </param-table>
-            <param-table :list="accordionItemExt">
-            </param-table>
-        </div>
+        <e-content>
+            <p class="tc lh3 font16">尝试一下</p>
+            <e-separator></e-separator>
+            <e-check-icon v-model="animate" text="animate" default-type="no-check" active-type="check" :icon-size="20"></e-check-icon>
+            <e-separator></e-separator>
+            <e-check-icon v-model="radio" text="radio" default-type="no-check" active-type="check" :icon-size="20"></e-check-icon>
+            <e-separator></e-separator>
+            <e-check-icon v-model="disabled" text="disabled" default-type="no-check" active-type="check" :icon-size="20"></e-check-icon>
+            <e-separator></e-separator>
+            <e-separator class="mt20"></e-separator>
+            <e-accordion v-model="index" :animate="animate" :radio="radio" :disabled="disabled">
+                <e-accordion-item v-for="(item,key) in list" :value="key">
+                    <e-accordion-header :title="item.title">
+                        <p class="font18">{{item.title}}</p>
+                    </e-accordion-header>
+                    <e-accordion-content class="">
+                        {{item.content}}
+                    </e-accordion-content>
+                    <e-separator></e-separator>
+                </e-accordion-item>
+            </e-accordion>
+            <div class="font14 ptb30">
+                <param-table :list="accordionInfo">
+                    <template slot="title">组件html tag：e-accordion</template>
+                    <template slot="tip">必须设置字体图标 arrow-up</template>
+                </param-table>
+                <param-table :list="accordionExt">
+                    <!-- <template slot="title">组件html tag：e-accordion</template> -->
+                </param-table>
+            </div>
+            <div class="font14 ptb30">
+                <param-table :list="accordionItemInfo">
+                    <template slot="title">组件html tag：e-accordion-item</template>
+                </param-table>
+                <param-table :list="accordionItemExt">
+                </param-table>
+            </div>
+            <div class="font14 ptb30">
+                <param-table :list="accordionHeader">
+                    <template slot="title">组件html tag：e-accordion-header</template>
+                </param-table>
+            </div>
+        </e-content>
     </e-layout>
 </template>
 <script>
-import {eAccordion,eAccordionItem} from '@/components';
+import { eAccordion, eAccordionItem, eAccordionHeader, eAccordionContent } from '@/components';
 import mergeProps from '@/../example/lib/mergeProps';
 export default {
     name: 'accordion',
     data() {
         return {
+            index: [0],
             animate: false,
             radio: false,
             disabled: false,
@@ -68,24 +76,27 @@ export default {
             value: [1],
 
             //参数说明
-            accordionInfo:mergeProps(eAccordion),
-            accordionItemInfo:mergeProps(eAccordionItem),
+            accordionInfo: mergeProps(eAccordion),
+            accordionItemInfo: mergeProps(eAccordionItem),
+            accordionHeader: mergeProps(eAccordionHeader),
+            accordionContent: mergeProps(eAccordionContent),
             accordionExt: [{
                 name: 'default',
-                type:'slot',
+                type: 'slot',
             }],
             accordionItemExt: [{
                 name: 'title',
-                type:'slot',
-            },{
+                type: 'slot',
+            }, {
                 name: 'content',
-                type:'slot',
+                type: 'slot',
             }],
         }
     },
+    mounted() {},
     methods: {
         choose() {
-            alert('1')
+
         }
     },
     created() {}

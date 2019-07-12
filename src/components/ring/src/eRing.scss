@@ -2,7 +2,7 @@
 * @Author: lifangfang
 * @Date:   2019-01-07 17:22:54
 * @Last Modified by:   lifangfang
-* @Last Modified time: 2019-06-21 16:00:17
+* @Last Modified time: 2019-07-05 10:50:59
 */
 
 @import "../../../style/base/variables.scss";
@@ -17,7 +17,7 @@
     transform: rotate(90deg);
     circle {
         &.active {
-            transition: stroke-dasharray 300ms linear;
+            transition: stroke-dasharray 1s linear;
         }
         &.forward {
             transform-origin: 50% 50%;
@@ -27,11 +27,14 @@
             transform-origin: 50% 50%;
             transform: scale(-1, 1);
         }
-        &.inner {
-            opacity: 0.2;
-        }
-        &.outer {
-            // opacity: 0.4;
-        }
+    }
+    .stop-start-default{
+        stop-color:#000;
+    }
+    .stop-end-default{
+        stop-color:#999;
+    }
+    .outer-default{
+        stroke: #f5f9ff;
     }
 }

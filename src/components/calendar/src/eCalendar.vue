@@ -79,7 +79,6 @@ export default {
         maxDate: [String],
         value: [String, Array],
         readonly: Boolean,
-
         theme:{
             type:String,
             default:'primary'

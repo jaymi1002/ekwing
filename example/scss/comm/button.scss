@@ -1,0 +1,60 @@
+/*
+* @Author: lifangfang
+* @Date:   2019-05-17 14:57:43
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-07-05 10:46:33
+*/
+@import './variables.scss';
+$button:( 
+	'primary':(
+		'default':(
+			'background-color':map-get($colors,'primary'),
+			'color':#fff,
+		),
+		'disabled':(
+			'background-color': #ececec,
+    		'color': #fff,
+		),
+		'plain-default':(
+			'border-color':map-get($colors,'primary'),
+			'color':map-get($colors,'primary'),
+		),
+		'plain-disabled':(
+			'border-color':map-get($colors,'primary'),
+			'color':map-get($colors,'primary'),
+			'opacity': 0.5
+		)
+	),
+	'counter-primary':(
+		'plain-default':(
+			'border-color':map-get($colors,'primary'),
+			'color':map-get($colors,'primary') !important,
+		),
+		'plain-disabled':(
+			'border-color':map-get($colors,'db'),
+			'color':map-get($colors,'db') !important,
+		)
+	),
+	'counter-green':(
+		'plain-default':(
+			'border-color':map-get($colors,'green'),
+			'color':map-get($colors,'green') !important,
+		),
+		'plain-disabled':(
+			'border-color':map-get($colors,'db'),
+			'color':map-get($colors,'db') !important,
+		)
+	)
+);
+
+@each $theme,$list in $button {
+	.#{$theme} {
+		@each $key,$var in $list {
+			&-#{$key} {
+				@each $cssKey,$value in $var {
+					#{$cssKey}:$value
+				}
+			}
+		}
+	}
+}

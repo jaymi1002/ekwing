@@ -1,6 +1,7 @@
 <template>
     <e-layout shadow>
-        <stu-header slot="header" title="button"></stu-header>
+        <stu-header title="button"></stu-header>
+        <e-content>
         <p class="tc lh3 font16">尝试一下</p>
         <e-separator></e-separator>
         <p class="tc lh2 font16">type:</p>
@@ -33,11 +34,15 @@
             <e-input type="number" v-model="height" label="高度:" placeholder="请输入"></e-input>
         </div>
         <e-separator></e-separator>
+        <div class="input-wrap plr30">
+            <e-input type="number" v-model="borderRadius" label="圆角:" placeholder="请输入"></e-input>
+        </div>
+        <e-separator></e-separator>
         <div class="pt20">
-            <e-button class="mt20" theme="primary" :width="parseInt(width)" :height="parseInt(height)" :type="type" :active-type="activeType" :inline="inline" :loading="status ==='loading'" :disabled="status === 'disabled'" :plain="plain">
+            <e-button class="mt20" theme="primary" :width="parseInt(width)" :height="parseInt(height)" :type="type" :active-type="activeType" :inline="inline" :border-radius="borderRadius" :loading="status ==='loading'" :disabled="status === 'disabled'" :plain="plain">
                 完成
             </e-button>
-            <e-button class="mt20" theme="primary" :width="parseInt(width)" :height="parseInt(height)" :type="type" :active-type="activeType" :inline="inline" :loading="status ==='loading'" :disabled="status === 'disabled'" :plain="plain">
+            <e-button class="mt20" theme="primary" :width="parseInt(width)" :height="parseInt(height)" :type="type" :active-type="activeType" :inline="inline" :border-radius="borderRadius" :loading="status ==='loading'" :disabled="status === 'disabled'" :plain="plain">
                 完成
             </e-button>
         </div>
@@ -78,6 +83,7 @@
                 <template slot="tip">只规定了点击效果为透明色</template>
             </param-table>
         </div>
+        </e-content>
     </e-layout>
 </template>
 <script>
@@ -88,6 +94,7 @@ export default {
         return {
             width:750,
             height:96,
+            borderRadius:10,
             typeList:['rect','cir','default'],
             activeTypeList:['scale','opacity'],
             inline:false,

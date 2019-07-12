@@ -2,7 +2,7 @@
 * @Author: lifangfang
 * @Date:   2019-03-21 19:02:07
 * @Last Modified by:   lifangfang
-* @Last Modified time: 2019-06-21 10:40:28
+* @Last Modified time: 2019-07-11 16:07:49
 */
 .e-grid {
     overflow: hidden;
@@ -36,12 +36,10 @@
         }
 
         &-icon {
-            width: 0.933rem;
-            height: 0.933rem;
-            margin: 0 auto 0.133rem;
+            margin: 0 auto 0.067rem;
             img {
-                width: 100%;
-                height: 100%;
+                max-width: 0.933rem;
+                max-height: 0.933rem;
             }
         }
         &-label {

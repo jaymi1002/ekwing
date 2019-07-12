@@ -2,38 +2,39 @@
 * @Author: lifangfang
 * @Date:   2019-04-02 17:42:55
 * @Last Modified by:   lifangfang
-* @Last Modified time: 2019-06-04 15:57:11
+* @Last Modified time: 2019-07-05 16:51:06
 */
 
 .accordion {
     width: 100%;
     .accordion {
+        &-item{
+
+        }
         &-item-title {
         }
         &-item-content {
             overflow: hidden;
             padding: 0 0.4rem;
+            height: auto;
         }
-        &-enter,
-        &-leave-to {
-            height: 0;
-        }
+
         &-animate-enter-active,
         &-animate-leave-active {
-            transition: height 0.5s ease;
+            transition: height 0.5s ease, padding-bottom 0.5s ease;;
         }
         &-animate-enter,
         &-animate-leave-to {
             height: 0;
         }
     }
-    .arrow-animate {
+    .icon-animate {
         transition: transform 0.2s linear;
     }
-    .arrow-up {
+    .icon-active {
         transform: rotate(0deg);
     }
-    .arrow-down {
+    .icon-default {
         transform: rotate(-180deg);
     }
 }

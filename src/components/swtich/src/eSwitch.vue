@@ -13,17 +13,18 @@ export default {
     },
     props: {
         value: Boolean,
-        color: {
-            type: String,
-            default: 'primary'
-        }
+        activeColor: String,
+        defaultColor:String,
+        disabled:Boolean
     },
     computed: {
         switchClass() {
             let classes = [];
             if (this.active) {
                 classes.push('active');
-                classes.push(`bg-${this.color}`);
+                this.activeColor ? classes.push(`bg-${this.activeColor}`) : classes.push('switch-active');
+            }else{
+                this.defaultColor ? classes.push(`bg-${this.defaultColor}`) : classes.push('switch-default');
             }
             return classes;
         }
@@ -31,27 +32,33 @@ export default {
     data() {
         return {
             active: this.value,
-            activeBgColor: null,
+            // activeBgColor: null,
         }
     },
     created() {
-        let div = document.createElement('div');
-        div.classList.add(`bg-${this.color}`);
-        document.body.appendChild(div);
-        this.activeBgColor = style(div, 'background-color');
-        div.remove();
+        // let div = document.createElement('div');
+        // div.classList.add(`bg-${this.color}`);
+        // document.body.appendChild(div);
+        // this.activeBgColor = style(div, 'background-color');
+        // div.remove();
     },
     methods: {
         trigger() {
+            if(this.disabled){
+                return false;
+            }
             this.active = !this.active;
         },
         pan(value) {
+            if(this.disabled){
+                return false;
+            }
             let switchWidth = width(this.$el);
             let switchBtnWidth = width(this.$refs.switchBtn);
             if (!this.active && value.direction === 'right') {
                 if (value.distance.x < switchWidth - switchBtnWidth) {
                     css(this.$refs.switchBtn, {
-                        left: value.distance.x + 'px'
+                        left: value.distance.x + 'px',
                     });
                     if (value.isFinal) {
                         if (value.distance.x > (switchWidth - switchBtnWidth) / 2) {
@@ -84,14 +91,14 @@ export default {
         },
         switchFalse() {
             css(this.$refs.switchBtn, {
-                left: '0px'
+                left: '0.03rem'
             });
         },
         switchTrue() {
             let switchWidth = width(this.$el);
             let switchBtnWidth = width(this.$refs.switchBtn);
             css(this.$refs.switchBtn, {
-                left: switchWidth - switchBtnWidth + 'px'
+                left: switchWidth - switchBtnWidth - 3 + 'px'
             });
         }
     },
@@ -103,17 +110,17 @@ export default {
             this.$emit('change', this.active);
             newVal ? this.switchTrue() : this.switchFalse();
         },
-        switchClass() {
-            if (this.active) {
-                css(this.$el, {
-                    'box-shadow': `0 0 0.067rem ${this.activeBgColor}`
-                });
-            } else {
-                css(this.$el, {
-                    'box-shadow': `0 0 0.067rem rgba(0, 0, 0, 0.4)`
-                });
-            }
-        }
+        // switchClass() {
+            // if (this.active) {
+            //     css(this.$el, {
+            //         'box-shadow': `0 0 0.067rem ${this.activeBgColor}`
+            //     });
+            // } else {
+            //     css(this.$el, {
+            //         'box-shadow': `0 0 0.067rem rgba(0, 0, 0, 0.4)`
+            //     });
+            // }
+        // }
     }
 }
 

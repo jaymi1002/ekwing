@@ -10,22 +10,25 @@ export default {
             type: Number,
             default: 750,
         },
-        bdColor: {
-            type: String,
-            default: 'e0',
-        },
+        bdColor: String,
         align: {
             type: String,
             default: 'center'
         },
         bdStyle:{
-        	type:String,
-        	default:'solid',
+            type:String,
+            default:'solid'
         }
     },
     computed: {
         separatorClass() {
-            return [`bd-${this.bdColor}`,`bd-${this.bdStyle}`];
+            let classes = [`bd-${this.bdStyle}`];
+            if(this.bdColor){
+                classes.push(`bd-${this.bdColor}`);
+            }else{
+                classes.push(`separator-default`);
+            }
+            return classes;
         },
         separatorStyle() {
         	let marginLeft = 'unset',marginRight = 'unset';
@@ -52,6 +55,9 @@ export default {
     max-width: 100%;
     height: 1px;
     border-top-width: 1px;
+    &.separator-default{
+        border-color: #e0e0e0;
+    }
 }
 
 </style>

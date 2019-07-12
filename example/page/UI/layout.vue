@@ -1,13 +1,13 @@
 <template>
     <e-layout head-color="f5">
-        <e-header slot="header" title="layout" v-if="head" :heightType="headerTitleSlot ? 'double' : 'single'">
+        <e-header title="layout" v-if="head">
             <template slot="left" v-if="headerLeftSlot">
-                <e-icon class="ml20" type="arrow-left" :size="24" color="g3" @click="goback"></e-icon>
+                <e-icon type="face-smile" :size="24" color="g3" @click="goback"></e-icon>
             </template>
             <template slot="title" v-if="headerTitleSlot">
-                <div class="tc lh1-5">
+                <div class="tc lh1-5 ptb10">
                     <p class="font20">单词闯关</p>
-                    <p class="font14">starter unit one</p>
+                    <p class="font16 lh1">单词闯关</p>
                 </div>
             </template>
             <template slot="title" v-else>
@@ -17,12 +17,13 @@
                 <e-icon class="mr20" type="face-smile" :size="24" color="blue" @click="rightClick"></e-icon>
             </template>
         </e-header>
+        <e-content>
         <div class="lh1-5">
             <e-check-icon default-type="no-check" active-type="check" :icon-size="20" v-model="head" text="head"></e-check-icon>
             <e-separator></e-separator>
             <e-check-icon default-type="no-check" active-type="check" :icon-size="20" v-model="headerRightSlot" text="headerRightSlot"></e-check-icon>
             <e-separator></e-separator>
-            <e-check-icon default-type="no-check" default-color="g6" active-type="check" :icon-size="20" v-model="headerTitleSlot" :text="headerTitleSlot ? 'headerType:double' : 'headerType:single'"></e-check-icon>
+            <e-check-icon default-type="no-check" default-color="g6" active-type="check" :icon-size="20" v-model="headerTitleSlot" text="headerTitleSlot"></e-check-icon>
             <e-separator></e-separator>
             <e-check-icon default-type="no-check" default-color="g6" active-type="check" :icon-size="20" v-model="headerLeftSlot" text="headerLeftSlot"></e-check-icon>
         </div>
@@ -40,6 +41,7 @@
             <param-table :list="headerExt">
             </param-table>
         </div>
+        </e-content>
     </e-layout>
 </template>
 <script type="text/javascript">

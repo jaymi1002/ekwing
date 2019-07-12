@@ -19,7 +19,7 @@
                     <e-button class="btn-item" :class="btnItemClass" :width="270" :height="96" type="rect" inline plain @click="cancel">
                         {{btnCancelTxt}}
                     </e-button>
-                    <e-button class="btn-item" :class="btnItemClass" :width="270" :height="96" type="rect" inline  @click="confirm">
+                    <e-button class="btn-item bold" :class="btnItemClass" :width="270" :height="96" type="rect" inline  @click="confirm">
                         {{btnConfirmTxt}}
                     </e-button>
                 </div>

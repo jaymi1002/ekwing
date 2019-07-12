@@ -1,5 +1,5 @@
 <template>
-    <i class="iconfont" @click="proxyClick" v-bind:class="classes" :style="styles">
+    <i class="iconfont" @click="proxyClick" :class="iconClass" :style="styles">
         <span class="e-icon-error" v-if="!type">
             error
         </span>
@@ -19,15 +19,19 @@ export default {
             type: Number,
             default: 14,
         },
-        color: {
-            type:String,
-            default:'primary'
-        },
+        color: String,
         disabled: Boolean,
     },
     computed: {
-        classes() {
-            return [`icon-${this.type}`, `text-${this.color}`,`font${this.size}`];
+        iconClass() {
+            let classes = [`font${this.size}`];
+            if(this.color){
+                classes.push(`text-${this.color}`);
+            }
+            if(this.type){
+                classes.push(`icon-${this.type}`);
+            }
+            return classes;
         },
         styles() {
             return {

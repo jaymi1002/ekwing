@@ -1,8 +1,9 @@
 <template>
     <e-layout title="input">
-        <stu-header slot="header">
+        <stu-header>
             <p class="font20">input</p>
         </stu-header>
+        <e-content>
         <div class="login-input-wrap">
             <e-input class="login-input" ref="myInput" validate tip required type="number" v-model="text" placeholder="请输入验证码" :minlength="4" :maxlength="4">
                 <div class="yzm text-blue font14 ml20">
@@ -48,6 +49,7 @@
                 <template slot="title">组件html tag：e-input</template>
             </param-table>
         </div>
+        </e-content>
     </e-layout>
 </template>
 <script type="text/javascript">

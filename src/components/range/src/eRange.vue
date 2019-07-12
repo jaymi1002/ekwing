@@ -5,8 +5,8 @@
         </div>
         <div class="e-range-main-wrap">
             <div class="e-range-main" ref="rangeMain">
-                <div class="e-range-outter" :class="bgColorClass"></div>
-                <div class="e-range-inner" :class="bgColorClass" :style="{width:(width-left)+'%',left:left+'%'}"></div>
+                <div class="e-range-outter" :class="outerClass"></div>
+                <div class="e-range-inner" :class="innerClass" :style="innerStyle"></div>
                 <div class="e-range-btn" v-if="type === 1" :style="{left:left+'%'}" v-touch-pan.horizontal="_leftTouchPanCallBack">
                     <div class="tip" v-if="tip">{{type === 0 ? value : value[0]}}</div>
                 </div>
@@ -36,10 +36,8 @@ export default {
                 return value.length === 2 && value[1] > value[0];
             }
         },
-        color: {
-            type: String,
-            default: 'primary'
-        },
+        outerColor: String,
+        innerColor: String,
         value: {
             type: [Number, Array],
             default: 0,
@@ -49,7 +47,8 @@ export default {
             default: 1
         },
         sideShow: Boolean,
-        tip:Boolean
+        tip: Boolean,
+        reverse:Boolean,
     },
     data() {
         return {
@@ -69,8 +68,17 @@ export default {
         }
     },
     computed: {
-        bgColorClass() {
-            return `bg-${this.color}`;
+        outerClass() {
+            if (this.outerColor) {
+                return `bg-${this.outerColor}`;
+            }
+            return 'outer-default';
+        },
+        innerClass() {
+            if (this.innerColor) {
+                return `bg-${this.innerColor}`;
+            }
+            return 'inner-default';
         },
         widthPercent() {
             return (this.rightBtnPosition + this.rightMovePosition) / this.rangeWidth * 100;
@@ -92,6 +100,12 @@ export default {
         },
         left() {
             return this.leftSteps * this.stepPercent;
+        },
+        innerStyle(){
+            if(this.reverse && typeof this.value === typeof 0){
+                return {right:'0%',left:this.width + '%'}
+            }
+            return {right:(100 - this.width)+'%',left:this.left+'%'};
         }
     },
     mounted() {
@@ -205,65 +219,71 @@ export default {
         justify-content: center;
         align-items: center;
         flex: 1 1 0;
-    }
-    .e-range-main {
-        position: relative;
-        height: 0.133rem;
-        width: 100%;
-    }
-    .e-range-inner,
-    .e-range-outter {
-        border-radius: 999px;
-        height: 100%;
-        position: absolute;
-        left: 0;
-        top: 0;
-    }
-    .e-range-inner {
-        width: 0;
-    }
-    .e-range-outter {
-        width: 100%;
-        opacity: 0.3;
-    }
-    .e-range-btn {
-        position: absolute;
-        width: 0.667rem;
-        height: 0.667rem;
-        line-height: 0.667rem;
-        text-align: center;
-        margin-top: -0.267rem;
-        margin-left: -0.333rem;
-        left: 20%;
-        border-radius: 50%;
-        background-color: #fff;
-        box-shadow: 0 0.013rem 0.067rem rgba(0, 0, 0, 0.4);
-        &:active {
-            transform: scale(1.2)
+        
+        .e-range-main {
+            position: relative;
+            height: 0.133rem;
+            width: 100%;
         }
-        .tip {
+        .e-range-inner,
+        .e-range-outter {
+            border-radius: 999px;
+            height: 100%;
             position: absolute;
-            width: 1.067rem;
-            padding: 0 0.2rem;
+            left: 0;
+            top: 0;
+        }
+        .e-range-inner {
+        }
+        .e-range-outter {
+            width: 100%;
+        }
+
+        .outer-default{
+            background-color: #999;
+        }
+        .inner-default{
+            background-color: #000;
+        }
+        .e-range-btn {
+            position: absolute;
+            width: 0.667rem;
+            height: 0.667rem;
+            line-height: 0.667rem;
             text-align: center;
-            color: #fff;
-            background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 0.133rem;
-            top: -0.867rem;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .tip:after {
-            content:'';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateY(100%) translateX(-50%);
-            width: 0;
-            height: 0;
-            border-width: 0.133rem;
-            border-style: solid;
-            border-color: rgba(0, 0, 0, 0.7) transparent transparent transparent;
+            margin-top: -0.267rem;
+            margin-left: -0.333rem;
+            left: 20%;
+            border-radius: 50%;
+            background-color: #fff;
+            box-shadow: 0 0.013rem 0.133rem rgba(0, 0, 0, 0.3);
+            &:active {
+                transform: scale(1.2)
+            }
+            .tip {
+                position: absolute;
+                width: 1.067rem;
+                padding: 0 0.2rem;
+                text-align: center;
+                color: #fff;
+                background-color: rgba(0, 0, 0, 0.4);
+                border-radius: 0.133rem;
+                top: -0.867rem;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .tip:after {
+                content: '';
+                position: absolute;
+                bottom: 0.013rem;
+                left: 50%;
+                transform: translateY(100%) translateX(-50%);
+                width: 0;
+                height: 0;
+                border-width: 0.133rem;
+                border-style: solid;
+                border-color: rgba(0, 0, 0, 0.4) transparent transparent transparent;
+            }
         }
     }
 }

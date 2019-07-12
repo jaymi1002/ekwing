@@ -1,26 +1,30 @@
 <template>
     <div class="e-grid-item" :style="styles" :class="gridItemClass" @click="$emit('click')">
-        <div class="e-grid-item-icon" v-if="hasIconSlot">
-            <slot name="icon"></slot>
-        </div>
-        <div class="e-grid-item-label font12 text-g3" v-if="hasLabelSlot">
-            <slot name="label"></slot>
-        </div>
-        <slot></slot>
+        <slot>
+            <div class="e-grid-item-icon" v-if="hasIconSlot">
+                <slot name="icon"></slot>
+            </div>
+            <div class="e-grid-item-label font12 text-g3" v-if="hasLabelSlot">
+                <slot name="label"></slot>
+            </div>
+        </slot>
     </div>
 </template>
 <script type="text/javascript">
-import {getSelfIndex} from '../../../helpers/parent-children.js';
 export default {
     name: 'e-grid-item',
+    props:{
+        value:Number,
+    },
     data(){
     	return {
-    		selfIndex:0
+    		selfIndex:this.value ? this.value : 0,
     	}
     },
+    inject:['grid'],
     computed: {
         cols() {
-            return this.$parent.cols;
+            return this.grid.cols;
         },
         styles() {
             let width = 100 / this.cols + '%';
@@ -29,15 +33,15 @@ export default {
             }
         },
         gridItemClass() {
-            let classes = [`bd-${this.$parent.bdColor}`];
-            if (this.$parent.hideVerticalDividers && this.position.col !== this.cols - 1) {
+            let classes = [`bd-${this.grid.bdColor}`];
+            if (this.grid.hideVerticalDividers && this.position.col !== this.cols - 1) {
                 classes.push('no-r-border');
                 
             }
-            if (this.position.col === this.cols - 1 && this.$parent.hideLrBorder) {
+            if (this.position.col === this.cols - 1 && this.grid.hideLrBorder) {
                 classes.push('no-r-border');   
             }
-            if(this.$parent.hideTbBorder){
+            if(this.grid.hideTbBorder){
                 classes.push('no-b-border');
             }
             return classes;
@@ -55,11 +59,7 @@ export default {
         hasLabelSlot(){
         	return !!this.$slots.label;
         }
-    },
-    mounted() {
-        this.selfIndex = getSelfIndex(this);
-    },
-    methods: {}
+    }
 }
 
 </script>

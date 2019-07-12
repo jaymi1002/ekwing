@@ -1,19 +1,25 @@
 <template>
 	<e-layout title="directives">
+		<stu-header slot="header" title="directives"></stu-header>
+		<e-content>
+		<p class="font18 lh3 tc">Tap</p>
 		<div class="tc font18">
-			<a href="javascript:;" v-tap="[tap,'hello']">tap</a>
+			<e-button href="javascript:;" theme="primary" v-tap="[tap,'hello','world']">tap</e-button>
 		</div>
-		<div class="mt20 demo1 bg-blue" v-touch-hold:300="hold">
+		<p class="font18 lh3 tc">hold</p>
+		<div class="demo1 bg-primary flex flex-center" v-touch-hold:300="hold">
 			<pre>{{holdBackData}}</pre>
 		</div>
-		<div class="mt20 demo1 bg-blue" v-touch-swipe.up="swipe">
+		<p class="font18 lh3 tc">swipe</p>
+		<div class="demo1 bg-primary flex flex-center" v-touch-swipe.up="swipe">
 			<pre>{{swipeBackData}}</pre>
 		</div>
-		<div class="mt20 demo1 bg-blue" v-touch-pan.prevent.stop.horizontal="pan">
+		<p class="font18 lh3 tc">pan</p>
+		<div class="demo1 bg-primary flex flex-center" v-touch-pan.prevent.stop.horizontal="pan">
 			<pre>{{panBackData}}</pre>
 		</div>
 
-		
+		</e-content>
 	</e-layout>
 </template>
 <script type="text/javascript">
@@ -22,12 +28,13 @@
 			return {
 				holdBackData:null,
 				swipeBackData:null,
-				panBackData:null
+				panBackData:null,
 			}
 		},
 		methods:{
-			tap(value){
-				console.log(value)
+			tap(value,value1){
+				console.log(value);
+				console.log(value1);
 			},
 			hold(value){
 				this.holdBackData = value;
@@ -44,7 +51,6 @@
 <style lang="scss">
 	.demo1{
 		width: 100%;
-		height: 8.0rem;
-		margin-top:1.333rem;
+		height: 9.0rem;
 	}
 </style>

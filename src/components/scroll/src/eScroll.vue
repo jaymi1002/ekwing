@@ -188,6 +188,12 @@ export default {
                         scrollDomHeight:height(this.eScrollDom)
                     });
                 }
+                if(this.downActive){
+                    this.judgePullDown({
+                        scrollMainHeight:height(this.scrollMain),
+                        scrollDomHeight:height(this.eScrollDom)
+                    });
+                }
                 
                 if (this.downActive && this.isPullDown) {
                     this.pullEnd('down');

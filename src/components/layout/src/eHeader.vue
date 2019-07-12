@@ -1,7 +1,8 @@
 <template>
     <div class="e-header flex flex-center" :class="classes">
-        <div class="pct15 left">
+        <div class="pct15 left" @click="$emit('goback')">
             <slot name="left">
+                <e-icon type="arrow-left" :size="iconSize" :color="iconColor"></e-icon>
             </slot>
         </div>
         <p class="pct70 title font18 text-g3">
@@ -9,13 +10,14 @@
                 {{title}}
             </slot>
         </p>
-        <div class="pct15 right">
-            <slot name="right"></slot>
+        <div class="pct15 right font18">
+            <slot name="right">
+            </slot>
         </div>
     </div>
 </template>
 <script type="text/javascript">
-import { height }  from '../../../helpers/dom';
+import { height } from '../../../helpers/dom';
 import vueBus from '../../../helpers/vueBus';
 export default {
     name: 'e-header',
@@ -27,21 +29,27 @@ export default {
             type: Boolean,
             default: true
         },
-        heightType: {
-            type: String,
-            default: 'single',
-            validator(value) {
-                return ['double', 'single'].indexOf(value) > -1;
-            }
+        fixed: Boolean,
+        iconSize:{
+            type:Number,
+            default:24
+        },
+        iconColor:{
+            type:String,
+            default:'g6'
         }
     },
     mounted() {
         this.$nextTick(() => {
-            vueBus.$emit('headerChange',height(this.$el));
+            if (this.fixed) {
+                vueBus.$emit('headerChange', height(this.$el));
+            }
         });
     },
     updated() {
-        vueBus.$emit('headerChange',height(this.$el));
+        if (this.fixed) {
+            vueBus.$emit('headerChange', height(this.$el));
+        }
     },
     computed: {
         classes() {
@@ -49,11 +57,8 @@ export default {
             if (this.shadow) {
                 classes.push('shadow');
             }
-            classes.push(`${this.heightType}`);
             return classes;
         }
-    },
-    methods: {
     }
 }
 
@@ -61,17 +66,12 @@ export default {
 <style lang="scss">
 .e-header {
     overflow: hidden;
+    min-height: 1.173rem;
     >* {
         height: 100%;
     }
     &.shadow {
         box-shadow: 0.027rem 0.027rem 0.067rem #eee;
-    }
-    &.single {
-        height: 1.2rem;
-    }
-    &.double {
-        height: 1.5rem;
     }
     .left,
     .right,

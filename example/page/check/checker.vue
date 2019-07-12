@@ -1,6 +1,7 @@
 <template>
     <e-layout>
         <stu-header title="checker"></stu-header>
+        <e-content>
         <p class="tc font16 lh3 text-g3">e-checker</p>
         <e-check-icon v-model="radio" text="radio" default-type="no-check" active-type="check" :icon-size="16"></e-check-icon>
         <e-separator></e-separator>
@@ -21,6 +22,7 @@
                 <template slot="title">组件html tag：e-checker-item</template>
             </param-table>
         </div>
+        </e-content>
     </e-layout>
 </template>
 <script type="text/javascript">

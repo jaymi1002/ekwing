@@ -1,0 +1,18 @@
+/*
+* @Author: lifangfang
+* @Date:   2019-07-03 17:45:43
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-07-05 11:00:33
+*/
+$fill:(
+	blue:#46c3ff,
+	green:#40bb8a,
+	white:#fff,
+	yellow:yellow
+);
+
+@each $key,$var in $fill {
+.fill-#{$key}{
+		fill:$var;
+	}
+}

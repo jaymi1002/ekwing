@@ -1,15 +1,16 @@
 <template>
 	<e-layout>
         <stu-header title="checkLevels"></stu-header>
+        <e-content>
         <p class="tc font16 lh3 text-g3">e-accordion 和 e-check-list</p>
     	<e-separator></e-separator>
 	    <e-accordion active-class="accordion-active" animate>
-	        <e-accordion-item v-for="(item,index) in studentList" :key="index">
-	            <template slot="title">
+	        <e-accordion-item v-for="(item,index) in studentList" :value="index">
+                <e-accordion-header>
 	                <p class="font16">
 	                    <e-icon :type="getIconType(item.select.length,item.list.length)" @click.stop="choose(index)" :color="getIconColor(item.select.length,item.list.length)" class="mr20" :size="20"></e-icon>{{item.title}}</p>
-	            </template>
-	            <template slot="content">
+                </e-accordion-header>
+	            <e-accordion-content>
 	                <e-check-list style="padding-left:0.267rem;" ref="checkStudent" tip v-model="item.select" :disabled="false" default-type="no-check" default-color="g9" active-type="check" active-color="green" :icon-size="20" no-border reverse>
 	                    <template v-for="(el,stuIndex) in item.list">
 	                        <e-check-item :value="stuIndex">
@@ -17,9 +18,11 @@
 	                        </e-check-item>
 	                    </template>
 	                </e-check-list>
-	            </template>
+	            </e-accordion-content>
+                <e-separator></e-separator>
 	        </e-accordion-item>
 	    </e-accordion>
+        </e-content>
     </e-layout>
 </template>
 <script type="text/javascript">

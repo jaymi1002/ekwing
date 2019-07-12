@@ -1,5 +1,5 @@
 <template>
-    <div class="e-ajax-bar" :class="classes" :style="style">
+    <div class="e-ajax-bar" :class="ajaxbarClass" :style="style">
     </div>
 </template>
 <script type="text/javascript">
@@ -21,10 +21,7 @@ function getTranslateStyle({ horizontal, per, reverse }) {
 export default {
     name: 'e-ajax-bar',
     props: {
-        color: {
-            type:String,
-            default:'primary'
-        },
+        color: String,
         position: {
             type: String,
             default: 'top',
@@ -54,11 +51,16 @@ export default {
             }));
             return style;
         },
-        classes() {
-            return [this.animate ? '' : 'no-transiton',
-                `${this.position}`,
-                `bg-${this.color}`
+        ajaxbarClass() {
+            let classes = [this.animate ? '' : 'no-transiton',
+                `${this.position}`
             ];
+            if(this.color){
+                classes.push(`bg-${this.color}`);
+            }else{
+                classes.push('ajaxbar-default');
+            }
+            return classes;
         },
         horizontal() {
             return (this.position === 'top' || this.position === 'bottom');
@@ -109,11 +111,11 @@ export default {
         _inc(p, amount) {
             if (typeof amount !== 'number') {
                 if (p < 25) {
-                    amount = Math.random() * 3 + 3
+                    amount = Math.random() * 10 + 3
                 } else if (p < 65) {
-                    amount = Math.random() * 3
+                    amount = Math.random() * 5
                 } else if (p < 85) {
-                    amount = Math.random() * 2
+                    amount = Math.random() * 3
                 } else if (p < 99) {
                     amount = 0.6
                 } else {

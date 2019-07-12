@@ -2,7 +2,7 @@
 * @Author: lifangfang
 * @Date:   2019-03-25 14:19:55
 * @Last Modified by:   lifangfang
-* @Last Modified time: 2019-06-05 17:09:25
+* @Last Modified time: 2019-07-11 17:34:51
 */
 
 .e-switch-wrap {
@@ -43,17 +43,23 @@
     height: 0.667rem;
     border-radius: 9999px;
     transition: background-color 0.1s, border 0.1s;
-    box-shadow: 0 0 0.067rem rgba(0, 0, 0, 0.4);
+    // box-shadow: 0 0 0.067rem rgba(0, 0, 0, 0.4);
     position: relative;
     &-btn {
         position: absolute;
+        left: 3px;
+        top: 0.03rem;
         border-radius: 50%;
-        height: 0.667rem;
-        width: 0.667rem;
+        height: 0.6rem;
+        width: 0.6rem;
         background-color: #fff;
-        box-shadow: 0 0.013rem 0.067rem rgba(0, 0, 0, 0.4);
-        left: 0;
-        top: 0;
+        // box-shadow: 0 0.013rem 0.067rem rgba(0, 0, 0, 0.4);
         transition: left 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
+    }
+    &.switch-default{
+        background-color: #e7e7e7;
+    }
+    &.switch-active{
+        background-color: #000;
     }
 }

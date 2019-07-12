@@ -1,15 +1,18 @@
 <template>
     <e-layout shadow>
-        <stu-header slot="header">
+        <stu-header>
             <p class="font20">range</p>
         </stu-header>
+        <e-content>
         <div class="range flex justify-center items-center">
             <div class="pct100">
-                <e-range color="primary" v-model="progress"></e-range>
+                <e-range tip v-model="progress" inner-color="green" outer-color="progress-outer"></e-range>
                 <br>
                 <br>
+                <e-range tip reverse v-model="progress" inner-color="green"></e-range>
                 <br>
-                <e-range color="green" tip v-model="progressArr" side-show></e-range>
+                <br>
+                <e-range tip v-model="progressArr" side-show></e-range>
                 <br>
             </div>
         </div>
@@ -19,6 +22,7 @@
                 <template slot="tip">color: bg-color</template>
             </param-table>
         </div>
+        </e-content>
     </e-layout>
 </template>
 <script type="text/javascript">

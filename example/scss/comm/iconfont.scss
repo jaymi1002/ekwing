@@ -1,0 +1,118 @@
+@font-face {
+    font-family: 'iconfont';
+    /* project id 998721 */
+    src: url('//at.alicdn.com/t/font_998721_zlt0pj5puce.eot');
+    src: url('//at.alicdn.com/t/font_998721_zlt0pj5puce.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_998721_zlt0pj5puce.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_998721_zlt0pj5puce.woff') format('woff'),
+    url('//at.alicdn.com/t/font_998721_zlt0pj5puce.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_998721_zlt0pj5puce.svg#iconfont') format('svg');
+}
+
+.iconfont {
+    font-family: iconfont !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: .2px;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    margin-top: -1px;
+}
+
+//必须配置的iconfont Comm
+
+/* -   + */
+
+.icon-reduce:before {
+    content: '\e8ea';
+}
+
+.icon-plus:before {
+    content: '\e8e8';
+}
+
+
+/* input 显示密码 隐藏密码 清除*/
+
+.icon-input-visible:before {
+    content: '\e8d5';
+}
+
+.icon-input-hidden:before {
+    content: '\e8d6';
+}
+
+.icon-input-clear:before {
+    content: '\e8f1';
+}
+
+//向上箭头 accordion
+.icon-accordion-arrow:before {
+    content: '\e90e';
+}
+
+
+/*toast tip*/
+
+.icon-tip-success:before {
+    content: '\e8ec';
+}
+
+.icon-tip-error:before {
+    content: '\e8f2';
+}
+
+.icon-tip-warning:before {
+    content: '\e8fd';
+}
+
+
+/* 图片 e-img*/
+
+.icon-img-loading:before {
+    content: '\e8d4';
+}
+
+.icon-img-error:before {
+    content: '\e619';
+}
+
+
+//业务
+// /*箭头*/
+.icon-arrow-right:before {
+    content: '\e905';
+}
+
+.icon-arrow-left:before {
+    content: '\e904';
+}
+
+.icon-arrow-down:before {
+    content: '\e908';
+}
+
+.icon-no-check:before {
+    content: '\e8b7';
+}
+
+.icon-check:before {
+    content: '\e8ed';
+}
+
+.icon-check-plain:before {
+    content: '\e8ec';
+}
+
+// /*脸*/
+.icon-face-smile:before {
+    content: '\e8e1';
+}
+
+.icon-face-cry:before {
+    content: '\e8e2';
+}
+
+.icon-face-no:before {
+    content: '\e8e0';
+}

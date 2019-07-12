@@ -24,7 +24,6 @@ export default {
     },
     data() {
         return {
-            isLastChild: false,
         }
     },
     computed: {
@@ -35,14 +34,11 @@ export default {
         },
         sideClass() {
             let classes = this.flexClasses;
-            if (this.isLastChild || this.right) {
+            if (this.right) {
                 classes.push('e-item-side-right');
             }
             return classes;
         }
-    },
-    mounted() {
-        this.isLastChild = isLastChild(this);
     }
 }
 

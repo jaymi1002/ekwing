@@ -1,7 +1,8 @@
 <template>
     <e-layout>
-        <stu-header title="list" slot="header">
+        <stu-header title="list">
         </stu-header>
+        <e-content>
         <e-list class="mt20">
             <e-separator></e-separator>
             <template v-for="(el,index) in list" v-key="index">
@@ -9,7 +10,7 @@
                     <e-item-main>
                         {{el.name}}
                     </e-item-main>
-                    <e-item-side>
+                    <e-item-side right>
                         <e-icon type="arrow-right" color="g9" :size="20"></e-icon>
                     </e-item-side>
                 </e-item>
@@ -32,7 +33,7 @@
                             <p class="font12 text-g6">{{el.grade}}</p>
                         </div>
                     </e-item-main>
-                    <e-item-side class="text-green">
+                    <e-item-side class="text-green" right>
                         {{el.score}}
                     </e-item-side>
                 </e-item>
@@ -54,7 +55,7 @@
                             <p class="font12 text-g6 mt5">{{el.grade}}</p>
                         </div>
                     </e-item-main>
-                    <e-item-side class="text-green">
+                    <e-item-side class="text-green" right>
                         {{el.score}}
                     </e-item-side>
                 </e-item>
@@ -78,7 +79,7 @@
                         </div>
                     </e-item-main>
                 </e-item>
-                <e-separator :width="590"></e-separator>
+                <e-separator :width="690"></e-separator>
             </template>
         </e-list>
         <div class="font14 ptb30">
@@ -102,6 +103,7 @@
                 <template slot="title">组件html tag：e-item-side</template>
             </param-table>
         </div>
+        </e-content>
     </e-layout>
 </template>
 <script type="text/javascript">

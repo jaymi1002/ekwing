@@ -24,7 +24,7 @@
                    v-model="currentValue" />
         </div>
         <div class="input-status" v-if="validate">
-            <e-icon class="ml20" :size="20" type="close-cir" @click="clear" color="g9" v-if="currentValue.length > 0 && inFocus && !readonly && !disabled && !hideClear"></e-icon>
+            <e-icon class="ml20" :size="20" type="input-clear" @click="clear" color="g9" v-if="currentValue.length > 0 && inFocus && !readonly && !disabled && !hideClear"></e-icon>
             <e-icon class="ml20" :size="28" :type="pwdIconType" color="g9" v-if="type === 'password' && currentValue.length > 0 && inFocus" @click="togglePwdVisible"></e-icon>
         </div>
         <div class="input-right-label" v-if="$slots.default">
@@ -87,7 +87,7 @@ export default {
         required: Boolean,
         tip: Boolean,
         trim: Boolean,
-        hideClear:Boolean
+        hideClear:Boolean,
     },
     data() {
         return {
@@ -122,7 +122,7 @@ export default {
             return this.type === 'text';
         },
         pwdIconType() {
-            return this.pwdVisible ? 'pwd-hidden' : 'pwd-visible';
+            return this.pwdVisible ? 'input-hidden' : 'input-visible';
         },
         inputType() {
             if (this.isPassword) {

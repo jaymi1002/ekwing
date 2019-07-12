@@ -1,6 +1,7 @@
 <template>
     <e-layout>
-    	<stu-header slot="header" title="img"></stu-header>
+    	<stu-header title="img"></stu-header>
+        <e-content>
         <e-img class="my-img" inline src="https://cn.vuejs.org/images/logo.png"></e-img>
         <e-img class="my-img" inline src="https://cn.vuejs.org/images/logo.png"></e-img>
         <div class="font14 ptb30">
@@ -9,6 +10,7 @@
                 <template slot="tip">必须配置 icon：img-loading 、 img-error</template>
             </param-table>
         </div>
+        </e-content>
     </e-layout>
 </template>
 <script type="text/javascript">

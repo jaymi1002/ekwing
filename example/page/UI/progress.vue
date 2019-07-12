@@ -1,11 +1,15 @@
 <template>
     <e-layout title="layout">
-        <stu-header slot="header" title="progress"></stu-header>
+        <stu-header title="progress"></stu-header>
+        <e-content>
+        <div style="margin:0 auto;">
+            <e-progress :value="progress" inner-color="primary"></e-progress>
+        </div>
         <div style="width:4.0rem;margin:0 auto;">
-            <e-ring :progress="progress"></e-ring>
+            <e-ring :progress="progress" start-color="blue" end-color="blue-tiny"></e-ring>
         </div>
         <div style="width:8.0rem;margin:0 auto;">
-            <e-cir-progress :progress="progress" btnColor="green"></e-cir-progress>
+            <e-cir-progress :progress="progress" :stroke-width="2" start-color="green" end-color="green" btn-color="green"></e-cir-progress>
         </div>
         <div class="font14 pt30">
             <param-table :list="ringInfo">
@@ -24,6 +28,7 @@
                 <template slot="tip">color : stroke-color;btnColor: bg-color</template>
             </param-table>
         </div>
+        </e-content>
     </e-layout>
 </template>
 <script type="text/javascript">
@@ -32,7 +37,7 @@ import mergeProps from '@/../example/lib/mergeProps';
 export default {
     data() {
         return {
-            progress: 0,
+            progress: 10,
             ringInfo:mergeProps(eRing),
             ringExt:[{
                 name:'ended',
@@ -44,12 +49,12 @@ export default {
         }
     },
     mounted(){
-        this.timer = setInterval(() => {
-            this.progress+=2;
-            if(this.progress >= 100){
-                clearInterval(this.timer);
-            }
-        },1000);
+        // this.timer = setInterval(() => {
+        //     this.progress+=5;
+        //     if(this.progress >= 100){
+        //         clearInterval(this.timer);
+        //     }
+        // },1000);
     }
 }
 

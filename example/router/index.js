@@ -148,5 +148,8 @@ export default new Router({
     }, {
         path: '/',
         component: index
+    },{
+        path:'/directives',
+        component:directives
     }],
 });

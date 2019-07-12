@@ -2,7 +2,7 @@
 * @Author: lifangfang
 * @Date:   2018-12-19 15:07:35
 * @Last Modified by:   lifangfang
-* @Last Modified time: 2019-06-11 14:08:43
+* @Last Modified time: 2019-07-03 18:03:18
 */
 
 .e-ajax-bar {
@@ -29,12 +29,18 @@
         left: 0;
         top: 0;
         height: 100%;
+        width: 0.093rem
     }
 
     &.right {
         right: 0;
         top: 0;
         height: 100%;
+        width: 0.093rem;
+    }
+
+    &.ajaxbar-default{
+        background-color: #000;
     }
 
 }

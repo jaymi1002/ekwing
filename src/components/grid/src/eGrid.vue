@@ -19,6 +19,11 @@
 				default:'e0'
 			}
 		},
+		provide(){
+			return {
+				grid:this
+			}
+		},
 		computed:{
 			gridClass(){
 				let classes = [`bd-${this.bdColor}`];

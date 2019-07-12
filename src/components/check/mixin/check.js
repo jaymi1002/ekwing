@@ -2,7 +2,7 @@
 * @Author: lifangfang
 * @Date:   2019-03-18 18:00:18
 * @Last Modified by:   lifangfang
-* @Last Modified time: 2019-06-25 19:02:04
+* @Last Modified time: 2019-07-03 18:24:24
 */
 export default{
 	props:{
@@ -14,14 +14,8 @@ export default{
 			type:String,
 			required:true
 		},
-		activeColor: {
-			type:String,
-			default:'primary'
-		},
-		defaultColor: {
-			type:String,
-			default: 'primary'
-		},
+		activeColor: String,
+		defaultColor:String,
 		iconSize: {
 			type:Number,
 			default:20

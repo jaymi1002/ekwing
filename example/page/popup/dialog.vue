@@ -1,6 +1,7 @@
 <template>
     <e-layout>
-        <stu-header slot="header" title="dialog"></stu-header>
+        <stu-header title="dialog"></stu-header>
+        <e-content>
         <div class="plr30">
             <e-input label="Title:" class="demo-input" type="text" v-model="title">
             </e-input>
@@ -42,6 +43,7 @@
                 <template slot="title">额外</template>
             </param-table>
         </div>
+        </e-content>
     </e-layout>
 </template>
 

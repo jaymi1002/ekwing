@@ -1,6 +1,9 @@
 <template>
     <div class="e-check-item" :class="itemClasses">
-        <e-item @click="select" :touch-active="$parent.touchActive" :active-class="$parent.activeClass">
+        <e-item @click="select" 
+            :touch-active="$parent.touchActive" 
+            :active-class="$parent.activeClass"
+            >
             <e-item-side v-if="$parent.reverse">
                 <e-icon v-if="iconType" :type="iconType" :disabled="$parent.disabled" :color="iconColor" :size="$parent.iconSize"></e-icon>
             </e-item-side>

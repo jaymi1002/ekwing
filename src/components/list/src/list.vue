@@ -8,7 +8,12 @@ export default {
     name: 'e-list',
     props: {
         touchActive: Boolean,
-        activeClass:String,
+        activeClass: String,
+    },
+    data(){
+    	return {
+    		isList:true
+    	}
     }
 }
 </script>

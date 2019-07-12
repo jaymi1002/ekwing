@@ -1,0 +1,17 @@
+/*
+* @Author: lifangfang
+* @Date:   2019-07-03 11:16:58
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-07-03 17:48:23
+*/
+$stroke:(
+	'primary':#46c3ff,
+	'primary-gradient':linear-gradient(left,#46c3ff, #69cdfd),
+	'progress-color': #f1f5f8
+);
+
+@each $key,$var in $stroke {
+	.stroke-#{$key}{
+		stroke:$var;
+	}
+}

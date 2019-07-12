@@ -1,18 +1,20 @@
 <template>
     <e-layout>
-        <stu-header slot="header" title="card"></stu-header>
+        <stu-header title="card"></stu-header>
+        <e-content>
         <div class="card-wrap">
             <e-card class="demo-card">
                 <e-card-title>
                     <p class="font16 tc bold pb20">单词连连看</p>
                 </e-card-title>
+                <e-separator></e-separator>
                 <e-card-label>
                     一旦你画出了轮廓，选择反选，然后清除不需要的部分
                 </e-card-label>
             </e-card>
             <e-card class="demo-card">
                 <e-card-title>
-                    <e-item class="no-padding">
+                    <e-item class="no-padding" no-border>
                         <e-item-side>
                             <div class="flex flex-center">
                                 <img src="http://ekwing-oss-new.oss-cn-shanghai.aliyuncs.com/ekwing/201806041513341210691152503653.jpg" class="head-img" />
@@ -24,7 +26,7 @@
                                 <p class="font12 text-g6">3年1班</p>
                             </div>
                         </e-item-main>
-                        <e-item-side class="text-green">
+                        <e-item-side class="text-green" right>
                             20
                         </e-item-side>
                     </e-item>
@@ -40,13 +42,14 @@
                 <e-card-main class="font16">
                     选择两个单词，选择反选，然后清除不需要的部分。选择反选，然后清除不需要的部分。
                 </e-card-main>
+                <e-separator></e-separator>
                 <e-card-label>
                     一旦你画出了轮廓，选择反选，然后清除不需要的部分
                 </e-card-label>
             </e-card>
             <e-card class="demo-card">
                 <e-card-title>
-                    <e-item class="no-padding">
+                    <e-item class="no-padding-lr" no-border>
                         <e-item-side>
                             <div class="flex flex-center">
                                 <img src="http://ekwing-oss-new.oss-cn-shanghai.aliyuncs.com/ekwing/201806041513341210691152503653.jpg" class="head-img" />
@@ -58,7 +61,7 @@
                                 <p class="font12 text-g6">3年1班</p>
                             </div>
                         </e-item-main>
-                        <e-item-side class="text-green">
+                        <e-item-side class="text-green" right>
 							20
                         </e-item-side>
                     </e-item>
@@ -66,6 +69,7 @@
                 <e-card-main class="font16">
                 	一旦你画出了轮廓，选择反选，然后清除不需要的部分
                 </e-card-main>
+                <e-separator></e-separator>
                 <e-card-label>
                 	一旦你画出了轮廓，选择反选，然后清除不需要的部分
                 </e-card-label>
@@ -94,6 +98,7 @@
             <param-table :list="cardLabelExt">
             </param-table>
         </div>
+        </e-content>
     </e-layout>
 </template>
 <script type="text/javascript">
@@ -131,7 +136,6 @@ export default {
 <style lang="scss">
 .card-wrap {
     background-color: #f8f8f8;
-    height: 100%;
     padding:0.267rem 0.4rem 0;
     box-sizing:border-box;
 

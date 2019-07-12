@@ -9,6 +9,7 @@
 </template>
 <script type="text/javascript">
 import proxyClick from '../../../mixin/proxyClick.js';
+import {css} from '../../../helpers/dom.js';
 export default {
     name: 'e-button',
     mixins:[proxyClick],
@@ -35,6 +36,10 @@ export default {
             validator(value) {
                 return ['opacity', 'scale'].indexOf(value) > -1;
             }
+        },
+        borderRadius:{
+            type:Number,
+            default:10,
         },
         loading: Boolean,
         disabled: Boolean,
@@ -83,12 +88,11 @@ export default {
             if(this.inline){
                 style['display'] = 'inline-block';
             }
+
+            style['border-radius'] = this.type === 'cir' ? '9999px'  : (this.type === 'default' ? this.borderRadius / 75 + 'rem' : 'unset');
             return style;
         }
-    },
-    methods: {
-
-    },
+    }
 }
 
 </script>

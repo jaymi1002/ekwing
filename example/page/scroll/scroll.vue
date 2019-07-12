@@ -1,22 +1,26 @@
 <template>
     <e-layout>
-        <stu-header slot="header" title="scroll"></stu-header>
-        <e-scroll pull-up-active  @pullDownHandle="pullDown1" @pullUpHandle="push1" style="height:50%">
+        <stu-header title="scroll"></stu-header>
+        <e-content>
+        <e-scroll pull-up-active pull-down-active  @pullDownHandle="pullDown1" @pullUpHandle="push1" style="height:50%">
             <e-list touch-active border-type="whole">
-                <e-item v-for="el in arr1">
-                    <e-item-side>
-                        <img class="my-head" border border-color="blue" src="https://cn.vuejs.org/images/logo.png"/>
-                    </e-item-side>
-                    <e-item-main>
-                        <div>
-                            <p class="font18 g3">李方方</p>
-                            <p class="font12 g9">励志学校</p>
-                        </div>
-                    </e-item-main>
-                    <e-item-side align-items="start">
-                        <e-icon type="arrow-right" color="g9" class="font20"></e-icon>
-                    </e-item-side>
-                </e-item>
+                <template v-for="el in arr1">
+                    <e-item>
+                        <e-item-side>
+                            <img class="my-head" border border-color="blue" src="https://cn.vuejs.org/images/logo.png" />
+                        </e-item-side>
+                        <e-item-main>
+                            <div>
+                                <p class="font18 g3">李方方</p>
+                                <p class="font12 g9">励志学校</p>
+                            </div>
+                        </e-item-main>
+                        <e-item-side align-items="center">
+                            <e-icon type="arrow-right" color="g9" class="font20"></e-icon>
+                        </e-item-side>
+                    </e-item>
+                    <e-separator></e-separator>
+                </template>
             </e-list>
         </e-scroll>
         <e-scroll class="mt20" horizontal style="height:2.667rem;" snap=".demo-1">
@@ -72,10 +76,11 @@
                 <template slot="title">额外</template>
             </param-table>
         </div>
+        </e-content>
     </e-layout>
 </template>
 <script type="text/javascript">
-import {eScroll} from '@/components';
+import { eScroll } from '@/components';
 import mergeProps from '@/../example/lib/mergeProps';
 export default {
     data() {
@@ -83,32 +88,32 @@ export default {
             touchResult: {},
             select: true,
             areaText: 'hello everybody,my name is lifangfang.',
-            arr1: [1, 2, 2,1,1,1,1,1,1,1,1,1,1],
+            arr1: [1, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
             arr2: [1, 2, 2, 2, 3],
-            scrollInfo:mergeProps(eScroll),
-            scrollExt:[{
-                name:'pullDrefreshtxt',
-                type:'slot',
-                default:'下拉刷新~'
-            },{
-                name:'realtimetxt',
-                type:'slot',
-                default:'松手加载~'
-            },{
-                name:'loadertxt',
-                type:'slot',
-                default:'加载中~'
-            },{
-                name:'upLoadmoretxt',
-                type:'slot',
-                default:'上拉加载更多~'
-            },{
-                name:'loaderendtxt',
-                type:'slot',
-                default:'---我是最后的底线---'
-            },{
-                name:'scrollEndHandle',
-                type:'v-on/@'
+            scrollInfo: mergeProps(eScroll),
+            scrollExt: [{
+                name: 'pullDrefreshtxt',
+                type: 'slot',
+                default: '下拉刷新~'
+            }, {
+                name: 'realtimetxt',
+                type: 'slot',
+                default: '松手加载~'
+            }, {
+                name: 'loadertxt',
+                type: 'slot',
+                default: '加载中~'
+            }, {
+                name: 'upLoadmoretxt',
+                type: 'slot',
+                default: '上拉加载更多~'
+            }, {
+                name: 'loaderendtxt',
+                type: 'slot',
+                default: '---我是最后的底线---'
+            }, {
+                name: 'scrollEndHandle',
+                type: 'v-on/@'
             }]
         }
     },
@@ -162,13 +167,12 @@ export default {
     width: 1.333rem;
     height: 1.333rem;
     border-radius: 50%;
-    border:0.013rem;
+    border: 0.013rem;
 }
 
 .demo-1 {
     width: 4.0rem;
-    height: 2.567rem;
-    // margin: 0 0.267rem;
+    height: 2.567rem; // margin: 0 0.267rem;
     vertical-align: middle;
     display: inline-block;
     border: 0.013rem solid #999;

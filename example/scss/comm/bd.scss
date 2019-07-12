@@ -1,0 +1,17 @@
+/*
+* @Author: lifangfang
+* @Date:   2019-07-03 17:46:47
+* @Last Modified by:   lifangfang
+* @Last Modified time: 2019-07-03 18:21:12
+*/
+
+$bd:(
+	blue:#46c3ff,
+	green:#40bb8a,
+	ec:#ececec,
+);
+@each $key,$var in $bd {
+	.bd-#{$key} {
+		border-color: $var
+	}
+}

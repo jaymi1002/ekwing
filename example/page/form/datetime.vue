@@ -1,10 +1,12 @@
 <template>
     <e-layout>
-        <stu-header slot="header">
+        <stu-header>
             <p class="font20">datatime</p>
         </stu-header>
+        <e-content>
         <div class="plr30">
             <e-datetime ref="myDatetime" v-model="datetime" format="YYYY-MM-DD HH">
+                <e-datetime-header title="请选择"></e-datetime-header>
             </e-datetime>
             <div class="input-wrap plr30">
                 <e-input type="text" v-model="datetime" label="datetime:" placeholder="请输入"></e-input>
@@ -19,10 +21,11 @@
                 <template slot="title">组件html tag：e-datetime</template>
             </param-table>
         </div>
+        </e-content>
     </e-layout>
 </template>
 <script type="text/javascript">
-import { eDateTime } from '@/components';
+import { eDatetime } from '@/components';
 import mergeProps from '@/../example/lib/mergeProps';
 export default {
     data() {
@@ -32,7 +35,7 @@ export default {
             date: '2018-04-04',
             time: '17:25',
             datetime: '2016-03-02 08',
-            datetimeInfo:mergeProps(eDateTime)
+            datetimeInfo:mergeProps(eDatetime)
         }
     },
     mounted(){

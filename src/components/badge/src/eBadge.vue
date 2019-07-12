@@ -15,11 +15,20 @@ export default {
             let classes = [];
             if (!this.label) {
                 classes.push('dot');
+            } else {
+                if (typeof this.label === typeof 0 && this.label > 9) {
+                    classes.push('type-2');
+                }
+
+                if (typeof this.label === typeof '' && this.label.length > 1) {
+                    classes.push('type-2');
+                }
             }
-            if(this.color){
+
+            if (this.color) {
                 classes.push(`bg-${this.color}`);
-            }else{
-                classes.push('default');
+            } else {
+                classes.push('badge-default');
             }
             return classes;
         }
@@ -30,22 +39,27 @@ export default {
 <style lang="scss">
 .e-badge {
     display: inline-block;
-    padding: 0.013rem 0.107rem 0;
     text-align: center;
-    min-width: 0.4rem;
-    height: 0.4rem;
+    min-width: 0.48rem;
+    height: 0.48rem;
+    line-height: 0.47rem;
     border-radius: 9999px;
     font-weight: 500;
     box-sizing: border-box;
     color: #fff;
     &.dot {
         min-width: unset;
-        width: 0.267rem;
-        height: 0.267rem;
+        width: 0.213rem;
+        height: 0.213rem;
         padding: 0;
     }
-    &.default{
+    &.badge-default {
         background-color: #FA5151;
+    }
+
+    &.type-2 {
+        padding-left: 0.227rem;
+        padding-right: 0.227rem;
     }
 }
 

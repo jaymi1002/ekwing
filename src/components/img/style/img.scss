@@ -2,7 +2,7 @@
 * @Author: lifangfang
 * @Date:   2019-03-22 18:56:10
 * @Last Modified by:   lifangfang
-* @Last Modified time: 2019-06-24 16:00:37
+* @Last Modified time: 2019-07-03 18:12:03
 */
 .e-img-loading{
 	img{
@@ -12,9 +12,12 @@
 	.placeholder{
 		height: 100%;
 		width: 100%;
-		background-color: #efefef;
 		display: flex;
 		justify-content:center;
 		align-items:center;
+		color:#e5e5e5;
+		&.default{
+			background-color: #f9f9f9;
+		}
 	}
 }

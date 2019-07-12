@@ -1,35 +1,37 @@
 <template>
-    <ul class="accordion">
+    <ul class="accordion text-g3">
         <slot></slot>
     </ul>
 </template>
 <script type="text/javascript">
+import separator from '../../../mixin/separator.js';
 export default {
     name: 'e-accordion',
     model: {
         prop: 'value',
         event: 'change'
     },
+    provide() {
+        return {
+            accordion: this
+        }
+    },
     props: {
-        activeClass: {
-            type: [String, Array]
-        },
+        activeClass: [String, Array],
         disabled: Boolean,
-        value: {
-            type: [Number, Array],
-        },
+        value: [Number, Array],
         radio: Boolean,
         animate: Boolean,
         noArrow: Boolean,
 
         //icon设置 type默认是arrow-up
-        iconColor:{
-            type:String,
-            default:'g6'
+        iconColor: {
+            type: String,
+            default: 'g6'
         },
-        iconSize:{
-            type:Number,
-            default:20
+        iconSize: {
+            type: Number,
+            default: 20
         }
     },
     data() {
@@ -47,18 +49,16 @@ export default {
         }
     },
     mounted() {
-        let _this = this;
-        this.$nextTick(function() {
-            if (_this.value !== undefined) {
-                _this.currentIndex = _this.value;
+        this.$nextTick(() => {
+            if (this.value !== undefined) {
+                this.currentIndex = this.value;
             }
         });
     },
     watch: {
         currentIndex(newVal, oldVal) {
-            let _this = this;
-            this.$nextTick(function() {
-                _this.$emit('change', newVal);
+            this.$nextTick(() => {
+                this.$emit('change', newVal);
             });
         },
         value(newVal) {

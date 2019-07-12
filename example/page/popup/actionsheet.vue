@@ -1,9 +1,9 @@
 <template>
     <e-layout>
-        <stu-header slot="header">
+        <stu-header>
             <p class="font20">actionsheet</p>
         </stu-header>
-
+        <e-content>
         <p class="example-table-title font16">尝试一下</p>
         <e-separator></e-separator>
         <e-check-icon v-model="horizontal" text="horizontal" default-type="no-check" active-type="check" :icon-size="20"></e-check-icon>
@@ -22,7 +22,15 @@
             <e-input v-model="explain" label="explain"></e-input>
          </div>
         <e-button class="font14 text-g3 ml30" :width="690" theme="primary" @click="$refs.actionsheet.show();">show</e-button>
-        <e-actionsheet ref="actionsheet" :title="title" :explain="explain" :horizontal="horizontal" :list="list" :no-cancel="noCancel" :mask-click-disabled="maskClickDisabled" :auto-close="autoClose"></e-actionsheet>
+        <e-actionsheet ref="actionsheet" :horizontal="horizontal" :list="list" :no-cancel="noCancel" :mask-click-disabled="maskClickDisabled" :auto-close="autoClose">
+            <e-actionsheet-header :title="title" :explain="explain"></e-actionsheet-header>
+            <e-separator v-if="!horizontal"></e-separator>
+            <template v-for="(el,key) in list">
+                <e-actionsheet-item  :value="key" :img="el.img" :text="el.title" :disabled="el.disabled">
+                </e-actionsheet-item>
+                <e-separator v-if="!horizontal"></e-separator>
+            </template>
+        </e-actionsheet>
 
         <div class="font14 ptb30">
             <param-table :list="actionsheetInfo">
@@ -38,6 +46,7 @@
                 </template>
             </param-table>
         </div>
+        </e-content>
     </e-layout>
 </template>
 <script type="text/javascript">

@@ -30,7 +30,7 @@ export default {
             type: String,
             default: 'default',
             validator(value) {
-                return ['right', 'error', 'warning', 'loading', 'default'].indexOf(value) > -1;
+                return ['success', 'error', 'warning', 'loading', 'default'].indexOf(value) > -1;
             }
         },
         content: String
@@ -43,14 +43,14 @@ export default {
     computed: {
         icon() {
             switch (this.type) {
-                case 'right':
-                    return 'right-plain';
+                case 'success':
+                    return 'tip-success';
                     break;
                 case 'error':
-                    return 'error-plain';
+                    return 'tip-error';
                     break;
                 case 'warning':
-                    return 'warning-plain';
+                    return 'tip-warning';
                     break;
                 case 'default':
                 case 'loading':
@@ -135,8 +135,8 @@ export default {
         margin-bottom: 0.067rem;
     }
     .loading {
-        width: 4em;
-        height: 4em;
+        width: 3.7em;
+        height: 3.7em;
         display: inline-block;
         vertical-align: middle;
         animation: eLoading 1s steps(12, end) infinite;

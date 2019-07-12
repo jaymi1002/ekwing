@@ -1,6 +1,7 @@
 <template>
     <e-layout>
-    	<stu-header slot="header" title="calendar"></stu-header>
+    	<stu-header title="calendar"></stu-header>
+    	<e-content>
     	<e-check-icon v-model="multiSelect" text="多选" default-type="no-check" active-type="check" :icon-size="20"></e-check-icon>
     	<e-separator></e-separator>
         <div class="fix p20 font16 text-g3">
@@ -25,6 +26,7 @@
                 <template slot="tip">theme:bg-theme</template>
             </param-table>
         </div>
+        </e-content>
     </e-layout>
 </template>
 <script type="text/javascript">

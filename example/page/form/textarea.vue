@@ -1,7 +1,8 @@
 <template>
     <e-layout>
-        <stu-header slot="header" title="textarea">
+        <stu-header title="textarea">
         </stu-header>
+        <e-content>
         <div class="plr20">
             <e-textarea class="mt20 my-area font14" placeholder="请输入" :rows="20" v-model="areaText"></e-textarea>
             <e-textarea class="mt20 my-area" autosize counter v-model="areaText" autocomplete="off"></e-textarea>
@@ -16,6 +17,7 @@
                 <template slot="title">额外</template>
             </param-table>
         </div>
+        </e-content>
     </e-layout>
 </template>
 <script type="text/javascript">

@@ -1,90 +1,43 @@
 <template>
-    <li class="bd-top-solid bdt1px bd-f6" :class="itemClasses">
-        <div class="accordion-item-title" @click="toggle">
-            <e-item>
-                <e-item-main>
-                    <slot name="title">
-                        <p class="font16 text-g3 lh1-5">{{title}}</p>
-                    </slot>
-                </e-item-main>
-                <e-item-side>
-                    <e-icon v-if="!$parent.noArrow" :class="[selfInActive ? 'arrow-up' : 'arrow-down',$parent.animate ? 'arrow-animate' : '']" type="arrow-up" :size="$parent.iconSize" :color="$parent.iconColor"></e-icon>
-                </e-item-side>
-            </e-item>
-        </div>
-        <transition :name="transitionName" @enter="transitionEnter" @leave="transitionLeave">
-            <div class="accordion-item-content" v-show="selfInActive">
-                <div ref="content" class="font14">
-                    <slot name="content"></slot>
-                </div>
-            </div>
-        </transition>
-        <e-separator></e-separator>
+    <li :class="itemClasses" class="accordion-item">
+        <slot></slot>
     </li>
 </template>
 <script type="text/javascript">
 import { getSelfIndex } from '../../../helpers/parent-children.js';
+import { css } from '../../../helpers/dom.js';
 export default {
     name: 'e-accordion-item',
     props: {
-        title: String
+        value: Number
+    },
+    inject: ['accordion'],
+    provide() {
+        return {
+            accordionItem: this,
+        }
     },
     computed: {
         itemClasses() {
-            if (this.$parent.radio) {
-                if (this.index === this.$parent.currentIndex) {
-                    return this.$parent.activeClass;
+            if (this.accordion.radio) {
+                if (this.index === this.accordion.currentIndex) {
+                    return this.accordion.activeClass;
                 }
             } else {
-                if (this.$parent.currentIndex.indexOf(this.index) > -1) {
-                    return this.$parent.activeClass;
+                if (this.accordion.currentIndex.indexOf(this.index) > -1) {
+                    return this.accordion.activeClass;
                 }
             }
             return;
         },
-        selfInActive() {
-            return this.$parent.radio ? this.$parent.currentIndex === this.index : this.$parent.currentIndex.indexOf(this.index) > -1;
+        actived() {
+            return this.accordion.radio ? this.accordion.currentIndex === this.index : this.accordion.currentIndex.indexOf(this.index) > -1;
         },
-        transitionName() {
-            if (this.$parent.animate) {
-                return 'accordion-animate';
-            } else {
-                return 'accordion';
-            }
-        }
     },
     data() {
         return {
-            index: 0,
+            index: this.value ? this.value : 0
         }
-    },
-    mounted() {
-        this.index = getSelfIndex(this);
-    },
-    methods: {
-        transitionEnter(el) {
-            setTimeout(() => {
-                el.style.height = this.$refs.content.offsetHeight + 'px';
-            }, 0);
-        },
-        transitionLeave(el) {
-            el.style.height = '0px';
-        },
-        toggle() {
-            if (this.$parent.disabled) {
-                return false;
-            }
-            if (this.$parent.radio) {
-                this.$parent.currentIndex = this.index;
-            } else {
-                let indexOfCurrent = this.$parent.currentIndex.indexOf(this.index);
-                if (indexOfCurrent === -1) {
-                    this.$parent.currentIndex.push(this.index);
-                } else {
-                    this.$parent.currentIndex.splice(indexOfCurrent, 1);
-                }
-            }
-        },
     }
 }
 

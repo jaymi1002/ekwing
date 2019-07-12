@@ -2,7 +2,7 @@
 * @Author: lifangfang
 * @Date:   2019-03-28 18:46:03
 * @Last Modified by:   lifangfang
-* @Last Modified time: 2019-06-12 11:51:01
+* @Last Modified time: 2019-07-02 15:40:21
 */
 
 @import '../../../style/base/variables.scss';
@@ -11,10 +11,7 @@ $itemHight:0.933rem;
 	width: 100%;
 	background-color: #fff;
     &-top {
-        display: flex;
         height: 1.2rem;
-        line-height: 1.2rem;
-        justify-content: space-between;
 		border-bottom: 0.013rem solid #e0e0e0;
     }
     &-content {

@@ -1,10 +1,5 @@
 <template>
     <div class="e-check-list">
-        <template v-if="title || $slots.title">
-            <p class="title font16 bold">
-                <slot name="title">{{title}}</slot>
-            </p>
-        </template>
         <slot></slot>
     </div>
 </template>
@@ -16,7 +11,6 @@ export default {
     mixins:[checkMixin],
     extends:eChecker,
     props: {
-        title: String,
         tip: Boolean,
         type: {
             type: String,
@@ -28,8 +22,6 @@ export default {
         reverse:Boolean,
         touchActive: Boolean,
         activeClass:[String,Array]
-    },
-    mounted(){
-    },
+    }
 }
 </script>
