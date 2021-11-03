@@ -17,7 +17,7 @@
   "dependencies": {
     "autosize": "^4.0.2",
     "iscroll": "^5.2.0",
-    "validator": "^10.11.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
